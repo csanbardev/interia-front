@@ -1,0 +1,11 @@
+nav{
+  top: 0;
+  position:static;
+  display: flex;
+  align-items: center;
+}
+
+#logo{
+  align-self: center;
+  margin-left: 8.3rem;
+}

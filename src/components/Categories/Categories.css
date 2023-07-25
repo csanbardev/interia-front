@@ -1,0 +1,24 @@
+#categories {
+  margin-top: 5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+
+#gridder {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.category-card{
+  position: relative;
+}
+
+.over-content{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
