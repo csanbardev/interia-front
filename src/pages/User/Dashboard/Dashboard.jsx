@@ -19,7 +19,7 @@ export function Dashboard() {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const cancelRef = useRef()
 
-  const handleDelete = async () => {
+  const handleDeleteUser = async () => {
     try {
       await deleteReq(`${api}/users/${userId}`, undefined, token)
       logout()
@@ -34,7 +34,7 @@ export function Dashboard() {
       <Heading as='h3' size='md' >Tutoriales propuestos</Heading>
       <Accordion allowToggle>
         {data?.map((item) => (
-          <DashboardAccordion key={item.id_tutorial} title={item.title} category={item.name} url={item.url} state={item.approved} />
+          <DashboardAccordion key={item.id_tutorial} title={item.title} category={item.name} url={item.url} state={item.approved} id={item.id_tutorial} />
         ))}
       </Accordion>
 
@@ -60,7 +60,7 @@ export function Dashboard() {
 
               <AlertDialogFooter>
                 <Button ref={cancelRef} onClick={onClose}>Cancelar</Button>
-                <Button colorScheme="red" onClick={handleDelete} ml={3} >Borrar</Button>
+                <Button colorScheme="red" onClick={handleDeleteUser} ml={3} >Borrar</Button>
               </AlertDialogFooter>
             </AlertDialogContent>
           </AlertDialogOverlay>

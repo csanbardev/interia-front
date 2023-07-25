@@ -1,13 +1,28 @@
-import { AccordionItem, AccordionButton, AccordionIcon, AccordionPanel, Box, Badge, List, ListItem, ListIcon, Accordion, Button, AlertDialog } from "@chakra-ui/react"
+import {AlertDialog, AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogBody, AlertDialogFooter, AccordionItem, AccordionButton, AccordionIcon, AccordionPanel, Box, Badge, List, ListItem, ListIcon, Accordion, Button, useDisclosure } from "@chakra-ui/react"
 import { LinkIcon, InfoIcon, DeleteIcon } from "@chakra-ui/icons"
 import { Link, useNavigate } from "react-router-dom"
-import { Suspense, useContext, useEffect, useTransition } from "react"
+import { Suspense, useContext, useRef } from "react"
 import { AuthContext } from "../../services/AuthContext"
 import { useFetch } from "../../hooks/useFetch"
 import { fetchData } from "../../utils/fetchData"
 import { handleApprove } from "../../handlers/handleApprove"
+import { deleteReq } from "../../services/http"
 
 export function DashboardAccordion({ title, state, url, category, id }) {
+  const {token} = useContext(AuthContext)
+  const api = import.meta.env.VITE_API_URL
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const cancelRef = useRef()
+
+  const handleDeleteTuto = async () => {
+    try {
+      await deleteReq(`${api}/tutorials/${id}`, undefined, token)
+      window.location.reload()
+    } catch (error) {
+      
+    }
+  }
+
   return (
     <article>
       <AccordionItem>
@@ -32,12 +47,31 @@ export function DashboardAccordion({ title, state, url, category, id }) {
             </ListItem>
             <ListItem>
               <ListIcon as={DeleteIcon} />
-              <Link>Eliminar</Link>
+              <Button onClick={onOpen}>Eliminar</Button>
             </ListItem>
           </List>
+          <AlertDialog isOpen={isOpen} leastDestructiveRef={cancelRef} onClose={onClose}>
+          <AlertDialogOverlay>
+            <AlertDialogContent>
+              <AlertDialogHeader fontSize='lg' fontWeight='bold'>
+                 Borrar tutorial
+              </AlertDialogHeader>
+
+              <AlertDialogBody>
+                ¿Estás seguro de hacer esto?
+              </AlertDialogBody>
+
+              <AlertDialogFooter>
+                <Button ref={cancelRef} onClick={onClose}>Cancelar</Button>
+                <Button colorScheme="red" onClick={handleDeleteTuto} ml={3} >Borrar</Button>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialogOverlay>
+      </AlertDialog>
         </AccordionPanel>
       </AccordionItem>
     </article>
+    
   )
 }
 
