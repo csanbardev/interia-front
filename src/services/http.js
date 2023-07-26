@@ -4,8 +4,7 @@ export const postReq = async (url, data, token) => {
     const response = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` }, body: JSON.stringify(data) })
 
     if (!response.ok) {
-      const errorResponse = await response.json()
-      throw new Error(errorResponse.error);
+      throw new Error(response.status);
     }
 
     return response.json();

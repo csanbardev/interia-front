@@ -3,6 +3,7 @@ import { AuthContext } from "../../services/AuthContext"
 import { useForm } from "react-hook-form"
 import { Button, Center, FormErrorMessage, Heading, Input, Spacer, Text } from "@chakra-ui/react"
 import { handleLogin } from "../../handlers/handleLogin"
+import { ErrorMessage } from "../../components/common/Errors/Errors"
 
 export function Login() {
   const { token, updateAuth } = useContext(AuthContext)
@@ -16,7 +17,9 @@ export function Login() {
       updateAuth(token, id_user, nick, role)
 
     } catch (error) {
-      setError(error.message)
+      if(error.message === '401'){
+        setError("Nick o contraseña incorrecta")
+      }
     }
   }
 
@@ -37,7 +40,7 @@ export function Login() {
           <Button variant='outline' colorScheme="teal" type="submit" marginTop='7' >Enviar</Button>
         </Center>
       </form>
-      {error && <p>{error}</p>}
+      {error && <ErrorMessage message={error} />}
     </section>
   )
 }
