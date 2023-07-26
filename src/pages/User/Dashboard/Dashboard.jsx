@@ -5,7 +5,7 @@ import { Link, useParams } from "react-router-dom"
 import { useFetch } from "../../../hooks/useFetch"
 import { useContext, useRef } from "react"
 import { AuthContext } from "../../../services/AuthContext"
-import { DashboardAccordion } from "../../../components/Accordion/Accordion"
+import { DashboardAccordion } from "../../../components/common/Accordion/Accordion"
 import { FavTutorials } from "../../../components/Containers/Containers"
 import { deleteReq } from "../../../services/http"
 

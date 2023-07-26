@@ -1,9 +1,6 @@
 import './Tutorials.css'
-import { TutorialCard } from "../../components/Cards/Cards";
-import ex from '../../assets/banner-img.jpg'
-import { fetchData } from '../../utils/fetchData';
+import { TutorialCard } from "../../components/common/Cards/Cards";
 import { useParams } from 'react-router-dom';
-import { Suspense, useEffect, useState } from 'react';
 import { useFetch } from '../../hooks/useFetch';
 import { Error404 } from '../../components/error-pages/Error404/Error404';
 

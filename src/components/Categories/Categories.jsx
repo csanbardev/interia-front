@@ -2,7 +2,7 @@ import './Categories.css'
 import { Suspense } from 'react';
 import { Heading, SimpleGrid } from '@chakra-ui/react';
 import ex from '../../assets/ex-category.svg'
-import { CategoryCard } from "../Cards/Cards";
+import { CategoryCard } from "../common/Cards/Cards";
 import { fetchData } from '../../utils/fetchData';
 
 const api = import.meta.env.VITE_API_URL

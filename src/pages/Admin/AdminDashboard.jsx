@@ -1,6 +1,6 @@
 import { Accordion, ButtonGroup, Button, Heading } from "@chakra-ui/react";
 import { Suspense, useContext, useState } from "react";
-import { DashboardAccordion, PendingTutorials, PendingTutorialsFailed } from "../../components/Accordion/Accordion";
+import { PendingTutorials, PendingTutorialsFailed } from "../../components/common/Accordion/Accordion";
 import { fetchData } from "../../utils/fetchData";
 import { getReq } from "../../services/http";
 import { AuthContext } from "../../services/AuthContext";

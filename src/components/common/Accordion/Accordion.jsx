@@ -2,11 +2,9 @@ import {AlertDialog, AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, 
 import { LinkIcon, InfoIcon, DeleteIcon } from "@chakra-ui/icons"
 import { Link, useNavigate } from "react-router-dom"
 import { Suspense, useContext, useRef } from "react"
-import { AuthContext } from "../../services/AuthContext"
-import { useFetch } from "../../hooks/useFetch"
-import { fetchData } from "../../utils/fetchData"
-import { handleApprove } from "../../handlers/handleApprove"
-import { deleteReq } from "../../services/http"
+import { AuthContext } from "../../../services/AuthContext"
+import { handleApprove } from "../../../handlers/handleApprove"
+import { deleteReq } from "../../../services/http"
 
 export function DashboardAccordion({ title, state, url, category, id }) {
   const {token} = useContext(AuthContext)

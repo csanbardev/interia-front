@@ -1,7 +1,7 @@
 import { useContext } from "react"
 import { AuthContext } from "../../services/AuthContext"
 import { useFetch } from "../../hooks/useFetch"
-import { TutorialCard } from "../Cards/Cards"
+import { TutorialCard } from "../common/Cards/Cards"
 
 const api = import.meta.env.VITE_API_URL
 

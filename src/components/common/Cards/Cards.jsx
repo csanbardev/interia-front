@@ -2,11 +2,10 @@ import { ExternalLinkIcon, WarningIcon } from '@chakra-ui/icons';
 import './Cards.css'
 import { Button, Card, CardBody, CardFooter, Divider, Heading, Icon, Image, Stack } from "@chakra-ui/react";
 import { Link } from 'react-router-dom';
-import { handleLike } from '../../handlers/handleLike';
+import { handleLike } from '../../../handlers/handleLike';
 import { useContext, useEffect, useState } from 'react';
-import { AuthContext } from '../../services/AuthContext';
-import { useFetch } from '../../hooks/useFetch';
-import { getReq } from '../../services/http';
+import { AuthContext } from '../../../services/AuthContext';
+import { getReq } from '../../../services/http';
 
 
 export function CategoryCard({ img, url }) {
