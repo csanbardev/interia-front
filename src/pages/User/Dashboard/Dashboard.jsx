@@ -1,6 +1,6 @@
 
-import { DeleteIcon, InfoIcon, LinkIcon, WarningTwoIcon } from "@chakra-ui/icons"
-import { Heading, Accordion, AccordionItem, AccordionButton, AccordionIcon, AccordionPanel, Box, Badge, List, ListItem, ListIcon, Divider, Stack, Button, useDisclosure, AlertDialog, AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogBody, AlertDialogFooter } from "@chakra-ui/react"
+import { WarningTwoIcon } from "@chakra-ui/icons"
+import { Heading, Accordion, Divider, Stack, Button, useDisclosure, AlertDialog, AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogBody, AlertDialogFooter } from "@chakra-ui/react"
 import { Link, useParams } from "react-router-dom"
 import { useFetch } from "../../../hooks/useFetch"
 import { useContext, useRef } from "react"
@@ -8,6 +8,7 @@ import { AuthContext } from "../../../services/AuthContext"
 import { DashboardAccordion } from "../../../components/common/Accordion/Accordion"
 import { FavTutorials } from "../../../components/Containers/Containers"
 import { deleteReq } from "../../../services/http"
+import { EmptyAdvert } from "../../../components/common/Errors/Errors"
 
 const api = import.meta.env.VITE_API_URL
 
@@ -37,7 +38,7 @@ export function Dashboard() {
           <DashboardAccordion key={item.id_tutorial} title={item.title} category={item.name} url={item.url} state={item.approved} id={item.id_tutorial} />
         ))}
       </Accordion>
-
+      {!data ? <EmptyAdvert message='Nada por aquí...' /> : null}    
       <Divider marginTop='4' orientation="horizontal" />
       <Heading as='h3' size='md' >Tutoriales favoritos</Heading>
       <FavTutorials userId={userId} />
