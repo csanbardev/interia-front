@@ -24,9 +24,6 @@ export function TutorialCard({ img, title, url, id }) {
   const { token } = useContext(AuthContext)
   const api = import.meta.env.VITE_API_URL
 
-
-
-
   useEffect(() => {
     if (token) {
 
