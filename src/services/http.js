@@ -21,13 +21,12 @@ export const patchReq = async (url, data, token) => {
     const response = await fetch(url, { method: 'PATCH', headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` }, body: JSON.stringify(data) })
 
     if (!response.ok) {
-      const errorResponse = await response.json()
-      throw new Error(errorResponse.error);
+      throw new Error(response.status);
+
     }
 
     return response.json();
   } catch (error) {
-    console.error(error)
     throw error;
   }
 
@@ -39,8 +38,8 @@ export const getReq = async(url, token) => {
     const response = await fetch(url, { method: 'GET', headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` } })
 
     if (!response.ok) {
-      const errorResponse = await response.json()
-      throw new Error(errorResponse.error);
+      throw new Error(response.status);
+
     }
 
     return response.json();
@@ -55,8 +54,8 @@ export const deleteReq = async (url, data, token) => {
     const response = await fetch(url, { method: 'DELETE', headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` }, body: JSON.stringify(data) })
 
     if (!response.ok) {
-      const errorResponse = await response.json()
-      throw new Error(errorResponse.error);
+      throw new Error(response.status);
+
     }
 
     return response.json();
