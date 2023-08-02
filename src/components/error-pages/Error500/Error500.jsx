@@ -1,7 +1,7 @@
 import { Button, Center, Heading } from "@chakra-ui/react"
 import { useNavigate } from "react-router-dom"
 
-export function Error505(){
+export function Error500(){
   const navigate = useNavigate()
 
   const handleBack = () => {

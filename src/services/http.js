@@ -39,7 +39,6 @@ export const getReq = async(url, token) => {
 
     if (!response.ok) {
       throw new Error(response.status);
-
     }
 
     return response.json();
