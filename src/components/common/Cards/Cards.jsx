@@ -8,12 +8,12 @@ import { AuthContext } from '../../../services/AuthContext';
 import { getReq } from '../../../services/http';
 
 
-export function CategoryCard({ img, url }) {
+export function CategoryCard({ img, url, title }) {
   return (
     <Link to={url} className="category-card">
-      <Image src={img} alt="" borderRadius='lg' />
+      <Image className='category-img' src={img} alt="" borderRadius='lg' />
       <div className="over-content">
-        <Heading as='h3' size='md' textAlign='center' color='wheat'>Química</Heading>
+        <Heading className='category-title' as='h3' size='md' textAlign='center' color='wheat'>{title}</Heading>
       </div>
     </Link>
   )

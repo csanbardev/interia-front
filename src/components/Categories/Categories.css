@@ -1,7 +1,19 @@
 #categories {
-  margin-top: 5rem;
+  margin-top: 2rem;
   padding-left: 1rem;
   padding-right: 1rem;
+}
+
+#categories-title{
+  font-size: 1.8rem;
+  border-left: 4px solid rgb(87, 85, 85);
+  border-radius: 10px;
+  padding-left: .8rem;
+  padding-top: 1.1rem;
+  padding-bottom: 1.1rem;
+  margin-bottom: 1.7rem;
+  line-height: 2.3rem;
+  font-weight: 800;
 }
 
 
@@ -13,6 +25,14 @@
 
 .category-card{
   position: relative;
+}
+
+.category-img{
+  filter: brightness(75%);
+}
+
+.category-title::first-letter{
+  text-transform: uppercase;
 }
 
 .over-content{
