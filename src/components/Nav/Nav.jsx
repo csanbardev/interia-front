@@ -1,10 +1,10 @@
 import './Nav.css'
-import { Menu, MenuButton, MenuList, MenuItem, IconButton } from "@chakra-ui/react"
-import { HamburgerIcon, MoonIcon } from "@chakra-ui/icons"
+import { Menu, MenuButton, MenuList, MenuItem, IconButton, Heading } from "@chakra-ui/react"
+import { EditIcon, HamburgerIcon, MoonIcon } from "@chakra-ui/icons"
 import { Link } from 'react-router-dom'
-import { Login } from '../../pages/Login/Login'
 import { useContext } from 'react'
 import { AuthContext } from '../../services/AuthContext'
+import { UserAvatarIcon } from '../common/AvatarIcons/AvatarIcons'
 
 
 export function Nav() {
@@ -15,39 +15,41 @@ export function Nav() {
   }
 
   return (
-    <nav>
-      <Menu>
-        <MenuButton
-          as={IconButton}
-          aria-label="Options"
-          icon={<HamburgerIcon />}
-          variant='ghostsm' />
-        <MenuList>
-          {token ? (<MenuAuth handleLogout={handleLogout} nick={nick} userId={id} role={role} />):(<MenuNonAuth />)}
-
-        </MenuList>
-      </Menu>
-      <Link to='/'><MoonIcon id='logo' /> </Link>
+    <nav className='spaced'>
+      {token ? (<MenuAuth handleLogout={handleLogout} nick={nick} userId={id} role={role} />) : (<MenuNonAuth />)}
     </nav>
   )
 }
 
 
-function MenuAuth({handleLogout, nick, userId, role}) {
+function MenuAuth({ handleLogout, nick, userId, role }) {
   return (
     <>
-     
-      <MenuItem><Link to={role==='admin' ? '/admin/'+userId:'/user/'+userId}>{nick}</Link></MenuItem>
-      <MenuItem><Link to='/tutorials/add'>Proponer</Link></MenuItem>
-      <MenuItem onClick={handleLogout}>Cerrar sesión</MenuItem>
+      
+      <Menu>
+        <MenuButton
+          as={IconButton}
+          aria-label="Options"
+          icon={<UserAvatarIcon imageUrl='https://www.pngrepo.com/png/290085/180/user-avatar.png' />}
+          variant='ghostsm' />
+        <MenuList>
+          <MenuItem><Link to={role === 'admin' ? '/admin/' + userId : '/user/' + userId}>Perfil</Link></MenuItem>
+          <MenuItem onClick={handleLogout}>Cerrar sesión</MenuItem>
+        </MenuList>
+      </Menu>
+      <Link style={{marginRight: '1.3rem'}} id='logo' to='/'>Interia</Link>
+      <Link to='/tutorials/add'><EditIcon /></Link>
     </>
+
   )
 }
+
 function MenuNonAuth() {
   return (
     <>
-      <MenuItem><Link to='/login'>Iniciar sesión</Link></MenuItem>
-      <MenuItem><Link to='/signup'>Registrarse</Link></MenuItem>
+      <Link className='session-link' to='/signup'>unirse</Link>
+      <Link id='logo' to='/'>Interia</Link>
+      <Link className='session-link' to='/login'>iniciar<br />sesión</Link>
     </>
   )
 }
