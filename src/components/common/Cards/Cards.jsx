@@ -1,6 +1,6 @@
 import { ExternalLinkIcon, WarningIcon } from '@chakra-ui/icons';
 import './Cards.css'
-import { Button, Card, CardBody, CardFooter, Divider, Heading, Icon, Image, Stack } from "@chakra-ui/react";
+import { Button, Card, CardBody, CardFooter, Divider, Heading, Icon, Image, Stack, useToast } from "@chakra-ui/react";
 import { Link } from 'react-router-dom';
 import { handleLike } from '../../../handlers/handleLike';
 import { useContext, useEffect, useState } from 'react';
@@ -20,6 +20,8 @@ export function CategoryCard({ img, url, title }) {
 }
 
 export function TutorialCard({ img, title, url, id }) {
+  const toast = useToast()
+
   const [liked, setLiked] = useState(false)
   const { token } = useContext(AuthContext)
   const api = import.meta.env.VITE_API_URL
@@ -39,7 +41,16 @@ export function TutorialCard({ img, title, url, id }) {
 
   const onLike = async () => {
     try {
-      if (liked) {
+      if(!token){
+        toast({
+          title:'No puedes dar like',
+          description: 'Inicia sesión primero',
+          status: 'error',
+          duration:2000,
+          isClosable: true
+        })
+      }
+      else if (liked) {
 
         const res = handleLike(id, -1, token)
         setLiked(false)
