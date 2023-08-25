@@ -1,10 +1,14 @@
 #categories {
   margin-top: 2rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1rem;
   padding-left: 1rem;
   padding-right: 1rem;
+  color: #c9c3c3;
 }
 
 #categories-title{
+  color: black;
   font-size: 1.8rem;
   border-left: 4px solid rgb(87, 85, 85);
   border-radius: 10px;
