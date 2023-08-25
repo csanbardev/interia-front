@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { handleLike } from '../../../handlers/handleLike';
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../services/AuthContext';
-import { getReq } from '../../../services/http';
+import { getReq, postReq } from '../../../services/http';
 
 
 export function CategoryCard({ img, url, title }) {
@@ -41,12 +41,12 @@ export function TutorialCard({ img, title, url, id }) {
 
   const onLike = async () => {
     try {
-      if(!token){
+      if (!token) {
         toast({
-          title:'No puedes dar like',
+          title: 'No puedes dar like',
           description: 'Inicia sesión primero',
           status: 'error',
-          duration:2000,
+          duration: 2000,
           isClosable: true
         })
       }
@@ -57,6 +57,31 @@ export function TutorialCard({ img, title, url, id }) {
       } else {
         const res = handleLike(id, 1, token)
         setLiked(true)
+      }
+    } catch (error) {
+
+    }
+  }
+
+  const onReport = async () => {
+    try {
+      if (!token) {
+        toast({
+          title: 'No puedes reportar',
+          description: 'Inicia sesión primero',
+          status: 'error',
+          duration: 2000,
+          isClosable: true
+        })
+      }else{
+        const res = postReq(`${api}/reports/${id}`, undefined,token)
+        toast({
+          title: 'Reporte listo',
+          description: 'Gracias por avisarnos',
+          status: 'info',
+          duration: 2000,
+          isClosable: true
+        })
       }
     } catch (error) {
 
@@ -87,7 +112,7 @@ export function TutorialCard({ img, title, url, id }) {
             },
           }}>
           <Button onClick={onLike} flex='1' variant={liked ? 'solid' : 'ghost'} leftIcon={<Icon />}>Recomendar</Button>
-          <Button flex='2' variant='ghost' leftIcon={<WarningIcon />}>Reportar</Button>
+          <Button onClick={onReport} flex='2' variant='ghost' leftIcon={<WarningIcon />}>Reportar</Button>
           <Button flex='2' variant='ghost' leftIcon={<ExternalLinkIcon />}><Link to={url}>Ver en YouTube</Link></Button>
         </CardFooter>
       </Card>
