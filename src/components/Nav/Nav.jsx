@@ -6,9 +6,11 @@ import { useContext } from 'react'
 import { AuthContext } from '../../services/AuthContext'
 import { UserAvatarIcon } from '../common/AvatarIcons/AvatarIcons'
 
+const api = import.meta.env.VITE_API_URL
+
 
 export function Nav() {
-  const { token, nick, logout, id, role } = useContext(AuthContext)
+  const { token, nick, logout, id, role, avatar } = useContext(AuthContext)
 
   const handleLogout = () => {
     logout()
@@ -16,13 +18,13 @@ export function Nav() {
 
   return (
     <nav className='spaced'>
-      {token ? (<MenuAuth handleLogout={handleLogout} nick={nick} userId={id} role={role} />) : (<MenuNonAuth />)}
+      {token ? (<MenuAuth handleLogout={handleLogout} nick={nick} userId={id} role={role} avatar={avatar} />) : (<MenuNonAuth />)}
     </nav>
   )
 }
 
 
-function MenuAuth({ handleLogout, nick, userId, role }) {
+function MenuAuth({ handleLogout, nick, userId, role, avatar }) {
   return (
     <>
       
@@ -30,7 +32,7 @@ function MenuAuth({ handleLogout, nick, userId, role }) {
         <MenuButton
           as={IconButton}
           aria-label="Options"
-          icon={<UserAvatarIcon imageUrl='https://www.pngrepo.com/png/290085/180/user-avatar.png' />}
+          icon={<UserAvatarIcon imageUrl={api+'/'+avatar} />}
           variant='ghostsm' />
         <MenuList>
           <MenuItem><Link to={role === 'admin' ? '/admin/' + userId : '/user/' + userId}>Perfil</Link></MenuItem>

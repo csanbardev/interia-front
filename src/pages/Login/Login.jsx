@@ -14,8 +14,8 @@ export function Login() {
 
   const onSubmit = async (data) => {
     try {
-      const {token, id_user, nick, role} = await handleLogin(data)
-      updateAuth(token, id_user, nick, role)
+      const {token, id_user, nick, role, avatar} = await handleLogin(data)
+      updateAuth(token, id_user, nick, role, avatar)
 
     } catch (error) {
       if(error.message === '401'){
