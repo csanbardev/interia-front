@@ -1,4 +1,4 @@
-import { Heading, Input, InputGroup, InputLeftElement, Select, Button, Center, Text, Alert, AlertIcon } from "@chakra-ui/react"
+import { Heading, Input, InputGroup, InputLeftElement, Select, Button, Center, Text, Alert, AlertIcon, Spacer } from "@chakra-ui/react"
 import { Suspense, useContext, useState } from "react"
 import { AuthContext } from "../../../services/AuthContext"
 import { useForm } from "react-hook-form"
@@ -6,6 +6,8 @@ import { LinkIcon } from "@chakra-ui/icons"
 import { fetchData } from "../../../utils/fetchData"
 import { postReq } from "../../../services/http"
 import { Link } from "react-router-dom"
+import './Add.css'
+
 
 const api = import.meta.env.VITE_API_URL
 const apiData = fetchData(api + '/categories')
@@ -36,11 +38,11 @@ export function AddTutorial() {
           <InputLeftElement pointerEvents='none'>
             <LinkIcon color='gray.300' />
           </InputLeftElement>
-          <Input type="url" placeholder="YouTube url" {...register('url', {required: true})}/>
+          <Input size='lg' variant='outline' type="url" placeholder="YouTube url" {...register('url', {required: true})}/>
         </InputGroup>
         {errors.url?.type === 'required' && <Text fontSize='sm' margin={2} color='red'>Inserta una url de YouTube</Text>}
         <Suspense fallback={<div>Loading...</div>}>
-          <Select placeholder='Elige categoría' {...register('id_category')} required>
+          <Select size='lg' placeholder='Elige categoría' {...register('id_category')} required>
             {categories?.map((item) => (
               <option value={item.id_category} key={item.id_category}>{item.name}</option>
             ))}

@@ -1,0 +1,15 @@
+#add-tutorial{
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin: 2.3rem;
+  border-radius: 10px;
+  background: white;
+}
+
+#add-tutorial h2 {
+  margin-bottom: 1.3rem;
+}
+
+form div:first-child{
+  margin-bottom: 1rem;
+}
