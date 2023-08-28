@@ -1,4 +1,4 @@
-#signup{
+#login{
   padding-top: 1rem;
   padding-bottom: 1rem;
   margin: 2.3rem;
@@ -6,7 +6,7 @@
   background: white;
 }
 
-#signup h2 {
+#login h2 {
   margin-bottom: 1.3rem;
 }
 

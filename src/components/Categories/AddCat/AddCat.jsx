@@ -1,3 +1,4 @@
+import './AddCat.css'
 import { useContext, useState } from "react"
 import { AuthContext } from "../../../services/AuthContext"
 import { useForm } from "react-hook-form"
@@ -26,7 +27,7 @@ export function AddCat(){
     <section className="spaced" id="add-cat">
       <Heading as='h2' textAlign='center' marginTop='10'>Sugerir categoría</Heading>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Input {...register('name', {required:true})} placeholder="Nombre de la categoría"/>
+        <Input size='lg' {...register('name', {required:true})} placeholder="Nombre de la categoría"/>
         <Center>
           <Button variant='outline' colorScheme="teal" type="submit" marginTop='7'>Enviar</Button>
         </Center>

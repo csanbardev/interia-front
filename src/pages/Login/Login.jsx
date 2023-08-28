@@ -1,3 +1,4 @@
+import './Login.css'
 import { useContext, useState } from "react"
 import { AuthContext } from "../../services/AuthContext"
 import { useForm } from "react-hook-form"
@@ -27,12 +28,12 @@ export function Login() {
     <section className="spaced" id="login">
       <Heading as='h2' textAlign='center' marginTop='10'>Iniciar Sesión</Heading>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Input placeholder="Nick" {...register('nick', {
+        <Input size='lg' placeholder="Nick" {...register('nick', {
           required: true
         })} />
         {errors.nick?.type === 'required' && <Text fontSize='sm' margin={2} color='red'>El nick es obligatorio.</Text>}
 
-        <Input type="password" placeholder="Contraseña" {...register('password', {
+        <Input size='lg' type="password" placeholder="Contraseña" {...register('password', {
           required: true
         })} />
         {errors.password?.type === 'required' && <Text fontSize='sm' margin={2} color='red'>La contraseña es obligatoria.</Text>}
