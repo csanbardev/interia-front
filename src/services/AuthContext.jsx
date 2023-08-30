@@ -29,8 +29,12 @@ export const AuthProvider = ({ children }) => {
     localStorage.setItem('role', newRole)
     localStorage.setItem('avatar', newAvatar)
     navigate("/")
+  }
 
-
+  const refreshAvatar = (newAvatar) => {
+    setAvatar(newAvatar)
+    
+    localStorage.setItem('avatar', newAvatar)
   }
 
   const logout = () => {
@@ -50,7 +54,7 @@ export const AuthProvider = ({ children }) => {
   }
 
   return (
-    <AuthContext.Provider value={{ token, id, nick, role, avatar, updateAuth, logout }}>
+    <AuthContext.Provider value={{ token, id, nick, role, avatar, updateAuth, logout, refreshAvatar }}>
       {children}
     </AuthContext.Provider>
   )
