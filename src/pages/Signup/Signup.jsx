@@ -14,8 +14,8 @@ export function Signup(){
 
   const onSubmit = async(data) => {
     try {
-      const {token, id_user, nick} = await handleSignup(data)
-      updateAuth(token, id_user, nick)
+      const {token, id_user, nick, role, avatar} = await handleSignup(data)
+      updateAuth(token, id_user, nick, role, avatar)
       setOK("¡Bienvenido!")
     } catch (error) {
       setError(error.message)
