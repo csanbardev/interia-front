@@ -22,7 +22,7 @@ export function Categories() {
 
 
   return (
-    <section className='pattern-grid-lg' id="categories" >
+    <section className='pattern-grid-lg spaced' id="categories" >
       <h2 id="categories-title">Aprende<br/> Algo Nuevo</h2>
       <SimpleGrid id='gridder'>
         <Suspense fallback={<div>Loading...</div>} >

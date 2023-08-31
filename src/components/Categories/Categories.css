@@ -2,12 +2,10 @@
   margin-top: 2rem;
   padding-top: 1.5rem;
   padding-bottom: 1rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
   color: #c9c3c3;
 }
 
-#categories-title{
+#categories-title {
   color: black;
   font-size: 1.8rem;
   border-left: 4px solid rgb(87, 85, 85);
@@ -27,22 +25,30 @@
   gap: 1rem;
 }
 
-.category-card{
+.category-card {
   position: relative;
 }
 
-.category-img{
+.category-img {
   filter: brightness(75%);
 }
 
-.category-title::first-letter{
-  text-transform: uppercase;
-}
 
-.over-content{
+.over-content {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
 }
 
+@media screen and (min-width: 1200px) {
+  #gridder {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+    gap: 1rem;
+  }
+
+  #categories-title {
+    font-size: 4.3rem;
+    line-height: 4.6rem;
+  }
+}

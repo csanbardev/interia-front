@@ -2,3 +2,10 @@
   padding-left: 1rem;
   padding-right: 1rem;
 }
+
+@media screen and (min-width: 1200px) {
+  .spaced {
+    padding-left: 25rem;
+    padding-right: 25rem;
+  }
+}
