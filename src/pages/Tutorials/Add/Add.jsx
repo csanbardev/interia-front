@@ -48,7 +48,7 @@ export function AddTutorial() {
             ))}
           </Select>
         </Suspense>
-        <Text mt='5' textAlign='center'>¿Falta una categoría? <Link to='/categories/add' style={{color: 'blue'}}>Sugerir</Link></Text>
+        <Text mt='5' textAlign='center'>¿Falta una categoría? <Link to='/categories/add'>Sugerir</Link></Text>
         <Center>
           <Button variant='outline' colorScheme="teal" type="submit" marginTop='7' >Enviar</Button>
         </Center>

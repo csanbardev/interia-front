@@ -3,11 +3,16 @@
   padding-bottom: 1rem;
   margin: 2.3rem;
   border-radius: 10px;
-  background: white;
+  border: 1px solid var(--accent);
 }
 
 #add-tutorial h2 {
   margin-bottom: 1.3rem;
+}
+
+#add-tutorial a{
+  color: var(--accent);
+  font-weight: 600;
 }
 
 form div:first-child{

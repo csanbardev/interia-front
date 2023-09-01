@@ -35,8 +35,8 @@ function MenuAuth({ handleLogout, nick, userId, role, avatar }) {
           icon={<UserAvatarIcon imageUrl={api+'/'+avatar} />}
           variant='ghostsm' />
         <MenuList>
-          <MenuItem><Link to={role === 'admin' ? '/admin/' + userId : '/user/' + userId}>Perfil</Link></MenuItem>
-          <MenuItem onClick={handleLogout}>Cerrar sesión</MenuItem>
+          <MenuItem style={{color: 'black'}}><Link to={role === 'admin' ? '/admin/' + userId : '/user/' + userId}>Perfil</Link></MenuItem>
+          <MenuItem style={{color: 'black'}} onClick={handleLogout}>Cerrar sesión</MenuItem>
         </MenuList>
       </Menu>
       <Link style={{marginRight: '1.3rem'}} id='logo' to='/'>Interia</Link>

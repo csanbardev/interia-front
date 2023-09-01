@@ -4,10 +4,15 @@
 
 .category-title{
   font-size: 1.3rem !important;
+  color: white !important;
 }
 
 .category-title::first-letter {
   text-transform: uppercase;
+}
+
+.tutorial-card{
+  background: var(--main-background) !important;
 }
 
 

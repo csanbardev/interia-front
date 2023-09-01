@@ -1,3 +1,21 @@
+:root{
+  --main-background: #353939;
+  --fonts: #fdfbff;
+  --accent: #fe6d5e;
+}
+
+body{
+  background-color: var(--main-background) !important;
+  color: var(--fonts) !important;
+}
+
+h1,h2,h3,h4,h5{
+  color: var(--fonts) !important;
+}
+
+
+
+
 .spaced{
   padding-left: 1rem;
   padding-right: 1rem;

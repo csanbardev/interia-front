@@ -91,7 +91,7 @@ export function TutorialCard({ img, title, url, id }) {
   return (
     <article>
 
-      <Card maxW='md' variant='elevated'>
+      <Card className='tutorial-card' maxW='md' variant='elevated'>
         <Image
           objectFit='cover'
           src={img}
