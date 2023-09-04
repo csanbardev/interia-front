@@ -18,7 +18,8 @@ form{
 
 @media screen and (min-width: 1200px) {
   #signup{
-    margin-left: 15rem;
-    margin-right: 15rem;
+    margin-left: 25rem;
+    margin-right: 25rem;
+    padding-bottom: 5rem;
   }
 } 

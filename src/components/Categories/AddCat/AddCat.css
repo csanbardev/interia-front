@@ -3,7 +3,7 @@
   padding-bottom: 1rem;
   margin: 2.3rem;
   border-radius: 10px;
-  background: white;
+  border: 1px solid var(--accent);
 }
 
 #add-cat h2 {
@@ -13,3 +13,12 @@
 form div:first-child{
   margin-bottom: 1rem;
 }
+
+
+@media screen and (min-width: 1200px) {
+  #add-cat{
+    margin-left: 25rem;
+    margin-right: 25rem;
+    padding-bottom: 5rem;
+  }
+} 

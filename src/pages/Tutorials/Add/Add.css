@@ -18,3 +18,12 @@
 form div:first-child{
   margin-bottom: 1rem;
 }
+
+
+@media screen and (min-width: 1200px) {
+  #add-tutorial{
+    margin-left: 25rem;
+    margin-right: 25rem;
+    padding-bottom: 5rem;
+  }
+} 
