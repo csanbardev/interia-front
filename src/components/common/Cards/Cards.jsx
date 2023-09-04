@@ -1,6 +1,6 @@
-import { ExternalLinkIcon, WarningIcon } from '@chakra-ui/icons';
+import { ExternalLinkIcon, LinkIcon, SunIcon, WarningIcon, CheckIcon } from '@chakra-ui/icons';
 import './Cards.css'
-import { Button, Card, CardBody, CardFooter, Divider, Heading, Icon, Image, Stack, useToast } from "@chakra-ui/react";
+import { Button, Card, CardBody, CardFooter, Divider, Heading, Icon, Image, Stack, useToast, Text, ButtonGroup } from "@chakra-ui/react";
 import { Link } from 'react-router-dom';
 import { handleLike } from '../../../handlers/handleLike';
 import { useContext, useEffect, useState } from 'react';
@@ -88,34 +88,54 @@ export function TutorialCard({ img, title, url, id }) {
     }
   }
 
-  return (
-    <article>
+  // return (
+  //   <article>
 
-      <Card className='tutorial-card' maxW='md' variant='elevated'>
+  //     <Card className='tutorial-card' maxW='md' variant='elevated'>
+  //       <Image
+  //         objectFit='cover'
+  //         src={img}
+  //         borderRadius='lg'
+  //       />
+  //       <CardBody>
+  //         <Stack>
+  //           <Heading as='h4' size='md'>{title}</Heading>
+  //         </Stack>
+  //       </CardBody>
+  //       <Divider />
+  //       <CardFooter
+  //         justify='space-between'
+  //         flexWrap='wrap'
+  //         sx={{
+  //           '& > button': {
+  //             minW: '136px',
+  //           },
+  //         }}>
+  //         <Button onClick={onLike} flex='1' variant={liked ? 'solid' : 'ghost'} leftIcon={<Icon />}>Recomendar</Button>
+  //         <Button onClick={onReport} flex='2' variant='ghost' leftIcon={<WarningIcon />}>Reportar</Button>
+  //         <Button flex='2' variant='ghost' leftIcon={<ExternalLinkIcon />}><Link to={url}>Ver en YouTube</Link></Button>
+  //       </CardFooter>
+  //     </Card>
+  //   </article>
+  // )
+
+  return(
+    <article className='tuto-container'>
+      <div className="tuto-img-container">
         <Image
-          objectFit='cover'
           src={img}
-          borderRadius='lg'
+          borderRadius='3xl'        
         />
-        <CardBody>
-          <Stack>
-            <Heading as='h4' size='md'>{title}</Heading>
-          </Stack>
-        </CardBody>
-        <Divider />
-        <CardFooter
-          justify='space-between'
-          flexWrap='wrap'
-          sx={{
-            '& > button': {
-              minW: '136px',
-            },
-          }}>
-          <Button onClick={onLike} flex='1' variant={liked ? 'solid' : 'ghost'} leftIcon={<Icon />}>Recomendar</Button>
-          <Button onClick={onReport} flex='2' variant='ghost' leftIcon={<WarningIcon />}>Reportar</Button>
-          <Button flex='2' variant='ghost' leftIcon={<ExternalLinkIcon />}><Link to={url}>Ver en YouTube</Link></Button>
-        </CardFooter>
-      </Card>
+      </div>
+      <div className="tuto-body-container">
+        <Heading as='h4' size='sm'>{title}</Heading>
+        <Text as='sup'>6 min.</Text>
+        <div className="tuto-button-container">
+          <button style={{color: liked ? 'var(--accent)': ''}} onClick={onLike}><CheckIcon /></button>
+          <button onClick={onReport} ><WarningIcon /></button>
+          <button><Link to={url} ><ExternalLinkIcon /></Link></button>
+        </div>
+      </div>
     </article>
   )
 }

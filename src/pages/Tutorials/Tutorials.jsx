@@ -27,11 +27,11 @@ export function Tutorials() {
     <section className='spaced' id="tutorials">
 
       {loading && <h3>Loading...</h3>}
-      <SimpleGrid>
+      
         {data?.map((item) => (
           <TutorialCard key={item.id_tutorial} id={item.id_tutorial} img={item.src_image} title={item.title} author={item.author} likes={item.likes} url={item.url} date={item.published_date} />
         ))}
-      </SimpleGrid>
+      
     </section>
   )
 }

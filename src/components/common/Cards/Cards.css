@@ -15,6 +15,46 @@
   background: var(--main-background) !important;
 }
 
+.tuto-container{
+  border-radius: 1.5rem;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  padding-bottom: 1rem;
+}
+
+.tuto-img-container img{
+  width: 100%;
+}
+
+.tuto-body-container{
+  padding: 1rem;
+}
+
+.tuto-button-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.tuto-button-container button:first-child::after{
+  content: "like";
+  display: block;
+  font-size: .8rem;
+  font-weight: 600;
+}
+
+.tuto-button-container button:nth-child(2)::after{
+  content: "reportar";
+  display: block;
+  font-size: .8rem;
+  font-weight: 600;
+}
+.tuto-button-container button:nth-child(3)::after{
+  content: "ver";
+  display: block;
+  font-size: .8rem;
+  font-weight: 600;
+}
+
 
 @media screen and (min-width: 1200px) {
   .category-title{

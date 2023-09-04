@@ -1,11 +1,11 @@
 #tutorials{
   margin-top: 5rem;
   display: grid;
-  gap: 3rem;
+  gap: 2rem;
 }
 
 @media screen and (min-width: 1200px) {
-  #tutorials div:first-child{
+  #tutorials{
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
     gap: 2rem;
   }
