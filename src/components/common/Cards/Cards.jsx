@@ -19,7 +19,7 @@ export function CategoryCard({ img, url, title }) {
   )
 }
 
-export function TutorialCard({ img, title, url, id }) {
+export function TutorialCard({ img, title, url, id, length }) {
   const toast = useToast()
 
   const [liked, setLiked] = useState(false)
@@ -129,7 +129,7 @@ export function TutorialCard({ img, title, url, id }) {
       </div>
       <div className="tuto-body-container">
         <Heading as='h4' size='sm'>{title}</Heading>
-        <Text as='sup'>6 min.</Text>
+        <Text as='sup'>{length}</Text>
         <div className="tuto-button-container">
           <button style={{color: liked ? 'var(--accent)': ''}} onClick={onLike}><CheckIcon /></button>
           <button onClick={onReport} ><WarningIcon /></button>
