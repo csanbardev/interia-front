@@ -23,7 +23,7 @@ export function Categories() {
 
   return (
     <section className='spaced' id="categories" >
-      <h2 id="categories-title">Aprende<br/> Algo Nuevo</h2>
+      <h2 id="categories-title">Un mundo por <span>aprender</span></h2>
       <SimpleGrid id='gridder'>
         <Suspense fallback={<div>Loading...</div>} >
           {data?.map((item) => (

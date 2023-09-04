@@ -6,15 +6,19 @@
 }
 
 #categories-title {
-  font-size: 1.8rem;
+  font-size: 2.6rem;
+  letter-spacing: .4rem;
   border-left: 4px solid rgb(87, 85, 85);
   border-radius: 10px;
   padding-left: .8rem;
-  padding-top: 1.1rem;
-  padding-bottom: 1.1rem;
+  padding-top: 1rem;
+  padding-bottom: 1.5rem;
   margin-bottom: 1.7rem;
   line-height: 2.3rem;
-  font-weight: 800;
+}
+
+#categories-title span{
+  font-weight: 700;
 }
 
 

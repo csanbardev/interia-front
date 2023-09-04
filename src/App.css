@@ -4,6 +4,10 @@
   --accent: #fe6d5e;
 }
 
+*{
+  font-family: 'Darker Grotesque', sans-serif !important;
+}
+
 body{
   background-color: var(--main-background) !important;
   color: var(--fonts) !important;
