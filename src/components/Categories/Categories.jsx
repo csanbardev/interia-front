@@ -22,7 +22,7 @@ export function Categories() {
 
 
   return (
-    <section className='spaced' id="categories" >
+    <section className='spaced total-height' id="categories" >
       <h2 id="categories-title">Un mundo por <span>aprender</span></h2>
       <SimpleGrid id='gridder'>
         <Suspense fallback={<div>Loading...</div>} >

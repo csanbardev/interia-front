@@ -24,7 +24,7 @@ export function AddCat(){
   }
 
   return (
-    <section className="spaced" id="add-cat">
+    <section className="spaced total-height" id="add-cat">
       <Heading as='h2' textAlign='center' marginTop='10'>Sugerir categoría</Heading>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Input size='lg' {...register('name', {required:true})} placeholder="Nombre de la categoría"/>

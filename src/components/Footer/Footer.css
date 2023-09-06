@@ -1,0 +1,34 @@
+#footer{
+  position:static;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: var(--accent);
+  color: var(--main-background);
+  display: flex;
+  flex-direction: column;
+  gap: 1.7rem;
+  margin-top: 2rem;
+  padding-top: .3rem;
+  padding-bottom: 1rem;
+}
+
+.footer-up, .footer-down{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.footer-up a, .footer-down span{
+  font-weight: 600;
+}
+
+#footer ul{
+  text-align: right;
+  list-style: none;
+}
+
+#media-icon-group{
+  display: flex;
+  gap: .7rem;
+}

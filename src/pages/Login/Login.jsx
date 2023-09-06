@@ -25,7 +25,7 @@ export function Login() {
   }
 
   return (
-    <section className="spaced" id="login">
+    <section className="spaced total-height" id="login">
       <Heading as='h2' textAlign='center' marginTop='10'>Iniciar Sesión</Heading>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Input size='lg' placeholder="Nick" {...register('nick', {

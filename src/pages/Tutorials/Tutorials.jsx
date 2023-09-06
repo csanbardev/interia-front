@@ -23,7 +23,7 @@ export function Tutorials() {
 
 
   return (
-    <section className='spaced' id="tutorials">
+    <section className='spaced total-height' id="tutorials">
 
       {loading && <h3>Loading...</h3>}
       

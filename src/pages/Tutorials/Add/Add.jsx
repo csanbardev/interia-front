@@ -31,7 +31,7 @@ export function AddTutorial() {
 
 
   return (
-    <section className="spaced" id="add-tutorial">
+    <section className="spaced total-height" id="add-tutorial">
       <Heading as='h2' textAlign='center' marginTop='10'>Sugerir tutorial</Heading>
       <form onSubmit={handleSubmit(onSubmit)}>
         <InputGroup>

@@ -10,7 +10,7 @@ export function NoneTutorial() {
     navigate(-1)
   }
   return (
-    <section className="spaced" id="none-tutorial">
+    <section className="spaced total-height" id="none-tutorial">
       <img src={noTutorial} alt="" />
       <Heading className="none-tutorial-title" textAlign='center' marginTop='10' as='h2'>Guau, cuánto vacío</Heading>
       <Text className="none-tutorial-description" textAlign='center'>¿Te gustaría llenarlo?</Text>
@@ -32,7 +32,7 @@ export function Error404() {
   }
 
   return (
-    <section className="spaced" id="error-404">
+    <section className="spaced total-height" id="error-404">
       <img src={error404} />
       <Heading className="error-404-title" as='h2' textAlign='center' >¿Qué andas buscando?</Heading>
       <Center>

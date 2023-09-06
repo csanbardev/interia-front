@@ -23,7 +23,7 @@ export function Signup(){
   }
 
   return (
-    <section className="spaced" id="signup">
+    <section className="spaced total-height" id="signup">
       <Heading as='h2' textAlign='center' marginTop='10'>Registrarse</Heading>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Input size='lg' placeholder='Nick' {...register('nick', {
