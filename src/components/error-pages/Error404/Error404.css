@@ -1,0 +1,37 @@
+#none-tutorial, #error-404{
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#none-tutorial img, #error-404 img{
+  height: 7.3rem;
+}
+
+.none-tutorial-title, .error-404-title{
+  font-size: 2.5rem !important;
+}
+
+.none-tutorial-description{
+  font-size: 1.7rem;
+}
+
+
+
+@media screen and (min-width: 1200px) {
+  #none-tutorial img, #error-404 img{
+    height: 11rem;
+  }
+
+  .none-tutorial-title, .error-404-title{
+    font-size: 3rem !important;
+  }
+
+  .none-tutorial-description{
+    font-size: 2rem;
+  }
+
+}
+
+

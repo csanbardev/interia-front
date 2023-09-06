@@ -1,5 +1,5 @@
 import './App.css'
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import { Nav } from './components/Nav/Nav'
 import { Tutorials } from './pages/Tutorials/Tutorials'
 import { Categories } from './components/Categories/Categories'
@@ -10,6 +10,7 @@ import { Signup } from './pages/Signup/Signup'
 import { Dashboard } from './pages/User/Dashboard/Dashboard'
 import { AdminDashboard } from './pages/Admin/AdminDashboard'
 import { AddCat } from './components/Categories/AddCat/AddCat'
+import { Error404 } from './components/error-pages/Error404/Error404'
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
@@ -25,6 +26,7 @@ function App() {
     <>
       <Nav />
       <Routes>
+        <Route path='*' element={<Navigate to='/404' />} />
         <Route path='/' element={<Categories />} />
         <Route path='/tutorials/:categoryId' element={<Tutorials />} />
         <Route path='/login' element={<Login />} />
@@ -33,6 +35,7 @@ function App() {
         <Route path='/user/:userId' element={<Dashboard />} />
         <Route path='/admin/:userId' element={<AdminDashboard />} />
         <Route path='/categories/add' element={<AddCat />} />
+        <Route path='/404' element={<Error404 />} />
       </Routes>
     </>
   )
