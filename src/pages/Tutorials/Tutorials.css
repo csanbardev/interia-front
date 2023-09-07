@@ -1,12 +1,15 @@
 #tutorials{
   margin-top: 5rem;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 2rem;
 }
 
 @media screen and (min-width: 1200px) {
   #tutorials{
+    display: grid;
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
+    grid-template-rows: minmax(auto, max-content);
     gap: 2rem;
   }
 }
