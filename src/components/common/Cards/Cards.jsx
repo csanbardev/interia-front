@@ -74,7 +74,7 @@ export function TutorialCard({ img, title, url, id, length }) {
           isClosable: true
         })
       }else{
-        const res = postReq(`${api}/reports/${id}`, undefined,token)
+        const res = await postReq(`${api}/reports/${id}`, undefined,token)
         toast({
           title: 'Reporte listo',
           description: 'Gracias por avisarnos',
@@ -84,7 +84,20 @@ export function TutorialCard({ img, title, url, id, length }) {
         })
       }
     } catch (error) {
+      let errorMessage = ""
 
+      if(error.message.includes('500')){
+        errorMessage = "Algo ha ido muy mal"
+      }else if(error.message.includes('401')){
+        errorMessage = "No puedes reportar dos veces un tutorial"
+      }
+      toast({
+        title: 'Ha habido un error',
+        description: errorMessage,
+        status: 'error',
+        duration: 2000,
+        isClosable: true
+      })
     }
   }
 
