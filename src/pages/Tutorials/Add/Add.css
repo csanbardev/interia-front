@@ -2,8 +2,6 @@
   padding-top: 1rem;
   padding-bottom: 1rem;
   margin: 2.3rem;
-  border-radius: 10px;
-  border: 1px solid var(--accent);
 }
 
 #add-tutorial h2 {
@@ -13,6 +11,16 @@
 #add-tutorial a{
   color: var(--accent);
   font-weight: 600;
+}
+
+form{
+  padding: 1.7rem;
+  border-radius: 10px;
+  border: 1px solid var(--accent);
+}
+
+form input{
+  border-color: var(--fonts) !important;
 }
 
 form div:first-child{
