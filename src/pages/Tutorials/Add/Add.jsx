@@ -1,4 +1,4 @@
-import { Heading, Input, InputGroup, InputLeftElement, Select, Button, Center, Text, Alert, AlertIcon, Spacer } from "@chakra-ui/react"
+import { Heading, Input, InputGroup, InputLeftElement, Select, Button, Center, Text, Alert, AlertIcon } from "@chakra-ui/react"
 import { Suspense, useContext, useState } from "react"
 import { AuthContext } from "../../../services/AuthContext"
 import { useForm } from "react-hook-form"
@@ -7,7 +7,7 @@ import { fetchData } from "../../../utils/fetchData"
 import { postReq } from "../../../services/http"
 import { Link } from "react-router-dom"
 import './Add.css'
-
+import { resetForm } from "../../../utils/formUtils"
 
 const api = import.meta.env.VITE_API_URL
 const apiData = fetchData(api + '/categories')
@@ -17,12 +17,16 @@ export function AddTutorial() {
   const { token } = useContext(AuthContext)
   const [error, setError] = useState('')
   const [ok, setOK] = useState(null)
-  const { register, formState: { errors }, handleSubmit } = useForm()
+  const { register, formState: { errors }, handleSubmit, reset } = useForm()
   const categories = apiData.read()
+
+
+  
 
   const onSubmit = async (data) => {
     try{
       const res = await postReq(`${api}/tutorials`, data, token)
+      resetForm(reset, setError)
       setOK("Tutorial propuesto con éxito")
     }catch(error){
       setError(error.message)
