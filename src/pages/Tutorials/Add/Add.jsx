@@ -33,9 +33,16 @@ export function AddTutorial() {
         isClosable: true
       })
     }catch(error){
+      let errorMessage = ""
+
+      if(error.message.includes('500')){
+        errorMessage = "Algo ha ido muy mal"
+      }else if(error.message.includes('401')){
+        errorMessage = "El enlace no es válido o no existe"
+      }
       toast({
         title: 'Ha habido un error',
-        description: error.message,
+        description: errorMessage,
         status: 'error',
         duration: 2000,
         isClosable: true
