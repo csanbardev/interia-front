@@ -2,15 +2,14 @@ import './Login.css'
 import { useContext, useState } from "react"
 import { AuthContext } from "../../services/AuthContext"
 import { useForm } from "react-hook-form"
-import { Button, Center, FormErrorMessage, Heading, Input, Spacer, Text } from "@chakra-ui/react"
+import { Button, Center, FormErrorMessage, Heading, Input, Spacer, Text, useToast } from "@chakra-ui/react"
 import { handleLogin } from "../../handlers/handleLogin"
 import { ErrorMessage } from "../../components/common/Errors/Errors"
 
 export function Login() {
   const { token, updateAuth } = useContext(AuthContext)
-  const [error, setError] = useState('')
   const { register, formState: { errors }, handleSubmit } = useForm()
-
+  const toast = useToast()
 
   const onSubmit = async (data) => {
     try {
@@ -18,9 +17,12 @@ export function Login() {
       updateAuth(token, id_user, nick, role, avatar)
 
     } catch (error) {
-      if(error.message === '401'){
-        setError("Nick o contraseña incorrecta")
-      }
+      toast({
+        title: 'Nick o contraseña incorrecta',
+        status: 'error',
+        duration: 2000,
+        isClosable: true
+      })
     }
   }
 
@@ -41,7 +43,6 @@ export function Login() {
           <Button variant='outline' colorScheme="teal" type="submit" marginTop='7' >Enviar</Button>
         </Center>
       </form>
-      {error && <ErrorMessage message={error} />}
     </section>
   )
 }

@@ -1,5 +1,5 @@
 import './Signup.css'
-import { Alert, Button, Center, Heading, Input } from "@chakra-ui/react"
+import { Alert, Button, Center, Heading, Input, useToast } from "@chakra-ui/react"
 import { useContext, useState } from "react"
 import { AuthContext } from "../../services/AuthContext"
 import { useForm } from "react-hook-form"
@@ -10,7 +10,7 @@ export function Signup(){
   const [ok, setOK] = useState(null)
   const [error, setError] = useState('')
   const {register, formState: {errors}, handleSubmit} = useForm()
- 
+  const toast = useToast()
 
   const onSubmit = async(data) => {
     try {
@@ -18,7 +18,13 @@ export function Signup(){
       updateAuth(token, id_user, nick, role, avatar)
       setOK("¡Bienvenido!")
     } catch (error) {
-      setError(error.message)
+      toast({
+        title: 'Error al registrarse',
+        description: error.message,
+        status: 'error',
+        duration: 2000,
+        isClosable: true
+      })
     }
   }
 
@@ -40,13 +46,6 @@ export function Signup(){
           <Button variant='outline' colorScheme="teal" type="submit" marginTop='7' >Enviar</Button>
         </Center>
       </form>
-      {error && <p>{error}</p>}
-      {ok && 
-        <Alert status="success" variant='subtle'>
-          <AlertIcon />
-          {ok}
-        </Alert>
-        }
     </section>
   )
 }

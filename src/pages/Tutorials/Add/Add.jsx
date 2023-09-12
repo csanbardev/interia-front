@@ -1,4 +1,4 @@
-import { Heading, Input, InputGroup, InputLeftElement, Select, Button, Center, Text, Alert, AlertIcon } from "@chakra-ui/react"
+import { Heading, Input, InputGroup, InputLeftElement, Select, Button, Center, Text, Alert, AlertIcon, useToast } from "@chakra-ui/react"
 import { Suspense, useContext, useState } from "react"
 import { AuthContext } from "../../../services/AuthContext"
 import { useForm } from "react-hook-form"
@@ -19,17 +19,27 @@ export function AddTutorial() {
   const [ok, setOK] = useState(null)
   const { register, formState: { errors }, handleSubmit, reset } = useForm()
   const categories = apiData.read()
-
-
+  const toast = useToast()
   
 
   const onSubmit = async (data) => {
     try{
       const res = await postReq(`${api}/tutorials`, data, token)
       resetForm(reset, setError)
-      setOK("Tutorial propuesto con éxito")
+      toast({
+        title: 'Tutorial propuesto con éxito',
+        status: 'success',
+        duration: 2000,
+        isClosable: true
+      })
     }catch(error){
-      setError(error.message)
+      toast({
+        title: 'Ha habido un error',
+        description: error.message,
+        status: 'error',
+        duration: 2000,
+        isClosable: true
+      })
     }
   }
 
@@ -57,13 +67,6 @@ export function AddTutorial() {
           <Button variant='outline' colorScheme="teal" type="submit" marginTop='7' >Enviar</Button>
         </Center>
       </form>
-      {error && <p>{error}</p>}
-      {ok && 
-        <Alert status="success" variant='subtle'>
-          <AlertIcon />
-          {ok}
-        </Alert>
-      }
     </section>
   )
 }
