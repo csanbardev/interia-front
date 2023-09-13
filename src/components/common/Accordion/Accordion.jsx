@@ -51,11 +51,11 @@ export function DashboardAccordion({ title, state, url, category, id }) {
           <AlertDialog isOpen={isOpen} leastDestructiveRef={cancelRef} onClose={onClose}>
           <AlertDialogOverlay>
             <AlertDialogContent>
-              <AlertDialogHeader fontSize='lg' fontWeight='bold'>
+              <AlertDialogHeader fontSize='lg' fontWeight='bold' color='black'>
                  Borrar tutorial
               </AlertDialogHeader>
 
-              <AlertDialogBody>
+              <AlertDialogBody color='black'>
                 ¿Estás seguro de hacer esto?
               </AlertDialogBody>
 

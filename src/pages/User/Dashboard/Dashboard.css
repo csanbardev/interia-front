@@ -4,6 +4,12 @@
   gap: .5rem;
 }
 
+#dashboard form{
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
 #icon-container{
   top: 0;
   left: 59%;

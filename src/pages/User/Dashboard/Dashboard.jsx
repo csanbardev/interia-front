@@ -77,6 +77,7 @@ export function Dashboard() {
       </Accordion>
       {!data ? <EmptyAdvert message='Nada por aquí...' /> : null}
       <Divider marginTop='4' orientation="horizontal" />
+
       <Heading as='h3' size='md' >Tutoriales favoritos</Heading>
       <FavTutorials userId={userId} />
       <Divider marginTop='4' orientation="horizontal" />
@@ -90,11 +91,11 @@ export function Dashboard() {
       <AlertDialog isOpen={isOpen} leastDestructiveRef={cancelRef} onClose={onClose}>
         <AlertDialogOverlay>
           <AlertDialogContent>
-            <AlertDialogHeader fontSize='lg' fontWeight='bold'>
+            <AlertDialogHeader fontSize='lg' fontWeight='bold' color='black'>
               Borrar cuenta
             </AlertDialogHeader>
 
-            <AlertDialogBody>
+            <AlertDialogBody color='black'>
               ¿Estás seguro de hacer esto?
             </AlertDialogBody>
 

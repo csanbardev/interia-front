@@ -1,8 +1,9 @@
+import './Containers.css'
 import { useContext } from "react"
 import { AuthContext } from "../../services/AuthContext"
 import { useFetch } from "../../hooks/useFetch"
 import { TutorialCard } from "../common/Cards/Cards"
-import {EmptyAdvert} from '../common/Errors/Errors'
+import { EmptyAdvert } from '../common/Errors/Errors'
 
 const api = import.meta.env.VITE_API_URL
 
