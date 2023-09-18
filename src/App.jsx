@@ -12,6 +12,7 @@ import { AdminDashboard } from './pages/Admin/AdminDashboard'
 import { AddCat } from './components/Categories/AddCat/AddCat'
 import { Error404 } from './components/error-pages/Error404/Error404'
 import { Footer } from './components/Footer/Footer'
+import { UpButton } from './components/common/UpButton/UpButton'
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
@@ -38,6 +39,7 @@ function App() {
         <Route path='/categories/add' element={<AddCat />} />
         <Route path='/404' element={<Error404 />} />
       </Routes>
+      <UpButton />
       <Footer />
     </>
   )
