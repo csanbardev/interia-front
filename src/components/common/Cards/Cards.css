@@ -29,7 +29,7 @@
   padding: 1rem;
 }
 
-.tuto-button-container{
+.tuto-button-container, .report-button-container{
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -50,6 +50,20 @@
 }
 .tuto-button-container button:nth-child(3)::after{
   content: "ver";
+  display: block;
+  font-size: .8rem;
+  font-weight: 600;
+}
+
+
+.report-button-container button:first-child::after{
+  content: "Eliminar video";
+  display: block;
+  font-size: .8rem;
+  font-weight: 600;
+}
+.report-button-container button:nth-child(2)::after{
+  content: "Cancelar Reporte";
   display: block;
   font-size: .8rem;
   font-weight: 600;

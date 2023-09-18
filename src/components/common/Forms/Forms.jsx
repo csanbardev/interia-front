@@ -9,6 +9,7 @@ import { postReq } from '../../../services/http'
 import { resetForm } from '../../../utils/formUtils'
 import { useFetch } from '../../../hooks/useFetch'
 import { handleLogin } from '../../../handlers/handleLogin'
+import { handleSignup } from '../../../handlers/handleSignup'
 
 const api = import.meta.env.VITE_API_URL
 

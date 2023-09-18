@@ -5,6 +5,7 @@ import { Suspense, useContext, useRef } from "react"
 import { AuthContext } from "../../../services/AuthContext"
 import { handleApprove } from "../../../handlers/handleApprove"
 import { deleteReq } from "../../../services/http"
+import { useFetch } from "../../../hooks/useFetch"
 
 export function DashboardAccordion({ title, state, url, category, id }) {
   const {token} = useContext(AuthContext)
@@ -75,7 +76,7 @@ export function DashboardAccordion({ title, state, url, category, id }) {
 
 export function PendingTutorials({ title, state, url, category, id }) {
   const { token } = useContext(AuthContext)
-
+  
   const onApprove = async () => {
     try {
       const res = await handleApprove(id, token)

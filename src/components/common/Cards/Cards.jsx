@@ -1,11 +1,11 @@
 import { ExternalLinkIcon, LinkIcon, SunIcon, WarningIcon, CheckIcon } from '@chakra-ui/icons';
 import './Cards.css'
-import { Button, Card, CardBody, CardFooter, Divider, Heading, Icon, Image, Stack, useToast, Text, ButtonGroup } from "@chakra-ui/react";
+import { Heading, Icon, Image, useToast, Text } from "@chakra-ui/react";
 import { Link } from 'react-router-dom';
 import { handleLike } from '../../../handlers/handleLike';
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../services/AuthContext';
-import { getReq, postReq } from '../../../services/http';
+import { deleteReq, getReq, postReq } from '../../../services/http';
 
 
 export function CategoryCard({ img, url, title }) {
@@ -73,8 +73,8 @@ export function TutorialCard({ img, title, url, id, length }) {
           duration: 2000,
           isClosable: true
         })
-      }else{
-        const res = await postReq(`${api}/reports/${id}`, undefined,token)
+      } else {
+        const res = await postReq(`${api}/reports/${id}`, undefined, token)
         toast({
           title: 'Reporte listo',
           description: 'Gracias por avisarnos',
@@ -86,9 +86,9 @@ export function TutorialCard({ img, title, url, id, length }) {
     } catch (error) {
       let errorMessage = ""
 
-      if(error.message.includes('500')){
+      if (error.message.includes('500')) {
         errorMessage = "Algo ha ido muy mal"
-      }else if(error.message.includes('401')){
+      } else if (error.message.includes('401')) {
         errorMessage = "No puedes reportar dos veces un tutorial"
       }
       toast({
@@ -102,19 +102,19 @@ export function TutorialCard({ img, title, url, id, length }) {
   }
 
 
-  return(
+  return (
     <article className='tuto-container'>
       <div className="tuto-img-container">
         <Image
           src={img}
-          borderRadius='3xl'        
+          borderRadius='3xl'
         />
       </div>
       <div className="tuto-body-container">
         <Heading as='h4' size='sm'>{title}</Heading>
         <Text as='sup'>{length}</Text>
         <div className="tuto-button-container">
-          <button style={{color: liked ? 'var(--accent)': ''}} onClick={onLike}><CheckIcon /></button>
+          <button style={{ color: liked ? 'var(--accent)' : '' }} onClick={onLike}><CheckIcon /></button>
           <button onClick={onReport} ><WarningIcon /></button>
           <button><Link to={url} ><ExternalLinkIcon /></Link></button>
         </div>
@@ -123,3 +123,44 @@ export function TutorialCard({ img, title, url, id, length }) {
   )
 }
 
+export function ReportCard({ id_tutorial, token, img, title, url }) {
+  const api = import.meta.env.VITE_API_URL
+
+
+  const onDelete = async () => {
+    try {
+      const res = await deleteReq(`${api}/tutorials/${id_tutorial}`, undefined, token)
+      window.location.reload()
+    } catch (error) {
+      console.error("Error deleting tuto:", error);
+    }
+  }
+
+  const onCancel = async () => {
+    try {
+      const res = await deleteReq(`${api}/reports/${id_tutorial}`, undefined, token)
+      window.location.reload()
+    } catch (error) {
+      console.error("Error canceling report:", error);
+    }
+  }
+
+  return (
+    <article className='tuto-container'>
+      <div className="tuto-img-container">
+        <Image
+          src={img}
+          borderRadius='3xl'
+        />
+      </div>
+      <div className="tuto-body-container">
+        <Heading as='h4' size='sm'>{title}</Heading>
+        <div className="report-button-container">
+          <button onClick={onDelete}><WarningIcon /></button>
+          <button onClick={onCancel}><ExternalLinkIcon /></button>
+        </div>
+      </div>
+    </article>
+  )
+
+}
