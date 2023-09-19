@@ -43,6 +43,8 @@ export const patchAvatar = async (url, data, token) => {
       body: formData
     });
 
+    console.log(response)
+
     if (!response.ok) {
       throw new Error(response.status);
     }

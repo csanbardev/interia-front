@@ -1,14 +1,15 @@
 import { ExternalLinkIcon, LinkIcon, SunIcon, WarningIcon, CheckIcon } from '@chakra-ui/icons';
 import './Cards.css'
-import { Heading, Icon, Image, useToast, Text } from "@chakra-ui/react";
+import { Heading, Icon, Image, useToast, Text, Button } from "@chakra-ui/react";
 import { Link } from 'react-router-dom';
 import { handleLike } from '../../../handlers/handleLike';
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../services/AuthContext';
-import { deleteReq, getReq, postReq } from '../../../services/http';
+import { deleteReq, getReq, patchAvatar, postReq } from '../../../services/http';
+import { useForm } from 'react-hook-form';
 
 
-export function CategoryCard({ img, url, title }) {
+export function CategoryCard({ img, url, title}) {
   return (
     <Link to={url} className="category-card">
       <Image className='category-img' src={img} alt="" borderRadius='lg' />
@@ -16,6 +17,34 @@ export function CategoryCard({ img, url, title }) {
         <Heading className='category-title' as='h3' textAlign='center' color='wheat'>{title}</Heading>
       </div>
     </Link>
+  )
+}
+
+export function PendingCategoryCard({ title, token, id , api }) {
+  const { register, formState: { errors }, handleSubmit } = useForm()
+
+
+  const onSubmit = async (data) => {
+    const formData = new Object()
+    formData.avatar = data.avatar[0]
+
+    try {
+      const res = await patchAvatar(`${api}/categories/pending/${id}`, data, token)
+    } catch (error) {
+      console.log(error)
+
+    }
+
+  }
+
+  return (
+    <article className='category-card'>
+      <p>{title}</p>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <input multiple={false} type='file' {...register('avatar', { required: true })} />
+        <Button type='submit'>Enviar</Button>
+      </form>
+    </article>
   )
 }
 
