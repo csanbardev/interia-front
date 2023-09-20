@@ -10,6 +10,7 @@ import { resetForm } from '../../../utils/formUtils'
 import { useFetch } from '../../../hooks/useFetch'
 import { handleLogin } from '../../../handlers/handleLogin'
 import { handleSignup } from '../../../handlers/handleSignup'
+import { ValidationError } from '../Errors/Errors'
 
 const api = import.meta.env.VITE_API_URL
 
@@ -59,7 +60,7 @@ export function AddTutoForm() {
         </InputLeftElement>
         <Input size='lg' variant='outline' type="url" placeholder="YouTube url" {...register('url', { required: true })} />
       </InputGroup>
-      {errors.url?.type === 'required' && <Text fontSize='sm' margin={2} color='red'>Inserta una url de YouTube</Text>}
+      {errors.url?.type === 'required' && <ValidationError message="Inserta una url de YouTube" />}
 
       <Select size='lg' placeholder='Elige categoría' {...register('id_category')} required>
         {data?.map((item) => (

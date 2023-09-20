@@ -1,5 +1,7 @@
-import { Alert, AlertIcon, Heading, Stack, Image, Center, Text } from "@chakra-ui/react";
-import empty from '../../../assets/ilustrations/undraw_no_data_re_kwbl.svg'
+import './Errors.css'
+import { Alert, AlertIcon, Center, Icon, Text } from "@chakra-ui/react";
+import { GrAlert } from "react-icons/gr";
+
 export function ErrorMessage({ message }) {
 
   return (
@@ -16,5 +18,14 @@ export function EmptyAdvert({ message }) {
       <Text as='samp' fontSize='sm' textAlign='center' margin={3} >{message}</Text>
     </Center>
 
+  )
+}
+
+export function ValidationError({message}){
+  return(
+    <div className="validation-error-container">
+      <Icon as={GrAlert} color='red' />
+      <Text>{message}</Text>
+    </div>
   )
 }

@@ -27,7 +27,7 @@ export function Categories() {
       <SimpleGrid id='gridder'>
         <Suspense fallback={<div>Loading...</div>} >
           {data?.map((item) => (
-            <CategoryCard title={item.name} key={item.id_category} img={`${api}${item.category_img}`} url={'tutorials/' + item.id_category} />
+            <CategoryCard title={item.name} key={item.id_category} img={`${api}/${item.category_img}`} url={'tutorials/' + item.id_category} />
           ))}
         </Suspense>
       </SimpleGrid>

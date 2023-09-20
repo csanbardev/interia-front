@@ -1,0 +1,13 @@
+.validation-error-container{
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: end;
+  gap: .5rem;
+  color: var(--fonts);
+  margin-bottom: .7rem;
+}
+
+.validation-error-container path{
+  stroke: var(--accent);
+}
