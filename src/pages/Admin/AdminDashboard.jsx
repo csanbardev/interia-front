@@ -6,6 +6,7 @@ import { getReq } from "../../services/http";
 import { AuthContext } from "../../services/AuthContext";
 import { useFetch } from "../../hooks/useFetch";
 import { PendingCategories, PendingReports } from "./Pending/Pending";
+import { PendingCategoriesTable } from "../../components/common/Tables/Tables";
 
 const api = import.meta.env.VITE_API_URL
 
@@ -28,7 +29,7 @@ export function AdminDashboard() {
       </Accordion>
       <Spacer />
       <Heading as='h3' size='md' >Categorías pendientes</Heading>
-      <PendingCategories token={token} />
+      <PendingCategoriesTable token={token} api={api} />
       <Spacer />
       <Heading as='h3' size='md' >Reportes pendientes</Heading>
       <PendingReports token={token} />
