@@ -2,9 +2,14 @@ import { Heading, Text } from '@chakra-ui/react'
 import './Footer.css'
 import { Link } from 'react-router-dom'
 import { Icon } from '@chakra-ui/icons'
-import {GrLinkedin, GrTwitter, GrGithub} from 'react-icons/gr'
+import { GrLinkedin, GrTwitter, GrGithub } from 'react-icons/gr'
+import { useContext } from 'react'
+import { AuthContext } from '../../services/AuthContext'
 
 export function Footer() {
+
+  const { token, role, id } = useContext(AuthContext)
+
   return (
     <section className='spaced' id="footer">
       <article className='footer-up' >
@@ -15,7 +20,7 @@ export function Footer() {
         <nav>
           <ul>
             <li><Link to='/' >Inicio</Link></li>
-            <li><Link>Perfil</Link></li>
+            {token ? (<FooterAuth role={role} userId={id}  />) : (<FooterNonAuth />)}
             <li><Link to='/contacto' >Contacto</Link></li>
           </ul>
         </nav>
@@ -29,5 +34,24 @@ export function Footer() {
         </div>
       </article>
     </section>
+  )
+}
+
+function FooterAuth({ role, userId }) {
+  return (
+    <li><Link to={role === 'admin' ? '/admin/' + userId : '/user/' + userId}>Perfil</Link></li>
+  )
+}
+
+function FooterNonAuth() {
+  return (
+    <>
+      <li>
+        <Link to='/signup'>Unirse</Link>
+      </li>
+      <li>
+        <Link to='/login'>Iniciar sesión</Link>
+      </li>
+    </>
   )
 }
