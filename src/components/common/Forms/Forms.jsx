@@ -58,15 +58,25 @@ export function AddTutoForm() {
         <InputLeftElement pointerEvents='none'>
           <LinkIcon color='gray.300' />
         </InputLeftElement>
-        <Input size='lg' variant='outline' type="url" placeholder="YouTube url" {...register('url', { required: true })} />
+        <Input size='lg' variant='outline' type="url" placeholder="YouTube url" {...register('url', {
+          required: 'Inserta una URL de YouTube',
+          pattern: {
+            value: /^(https?:\/\/)?(www\.)?(youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)(\S*)?$/,
+            message: 'URL de YouTube no válida'
+          }
+        })} />
       </InputGroup>
-      {errors.url?.type === 'required' && <ValidationError message="Inserta una url de YouTube" />}
 
-      <Select size='lg' placeholder='Elige categoría' {...register('id_category')} required>
+      {errors.url && <ValidationError message={errors.url?.message} />}
+
+      <Select size='lg' placeholder='Elige categoría' {...register('id_category', {
+        required: 'Indica una categoría'
+      })} required>
         {data?.map((item) => (
           <option value={item.id_category} key={item.id_category}>{item.name}</option>
         ))}
       </Select>
+      {errors.id_category && <ValidationError message={errors.id_category?.message} />}
 
       <Text mt='5' textAlign='center'>¿Falta una categoría? <Link to='/categories/add'>Sugerir</Link></Text>
       <Center>
@@ -75,7 +85,6 @@ export function AddTutoForm() {
     </form>
   )
 }
-
 
 export function LoginForm() {
   const { token, updateAuth } = useContext(AuthContext)
@@ -100,14 +109,14 @@ export function LoginForm() {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Input size='lg' placeholder="Nick" {...register('nick', {
-        required: true
+        required: "Introduce tu nick"
       })} />
-      {errors.nick?.type === 'required' && <Text fontSize='sm' margin={2} color='red'>El nick es obligatorio.</Text>}
+      {errors.nick && <ValidationError message={errors.nick.message} />}
 
       <Input size='lg' type="password" placeholder="Contraseña" {...register('password', {
-        required: true
+        required: "Introduce tu contraseña"
       })} />
-      {errors.password?.type === 'required' && <Text fontSize='sm' margin={2} color='red'>La contraseña es obligatoria.</Text>}
+      {errors.password && <ValidationError message={errors.password.message} />}
       <Center>
         <Button variant='outline' colorScheme="teal" type="submit" marginTop='7' >Enviar</Button>
       </Center>
@@ -139,15 +148,33 @@ export function SignupForm() {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Input size='lg' placeholder='Nick' {...register('nick', {
-        required: true
+        required: "Introduce un nick",
+        minLength: {
+          value: 4,
+          message: "Demasiado corto"
+        },
+        maxLength: {
+          value: 16,
+          message: "Demasiado largo"
+        }
       })} />
+      {errors.nick && <ValidationError message={errors.nick.message} />}
       <Input size='lg' type="password" placeholder="Contraseña" {...register('password', {
-        required: true
+        required: "Introduce una contraseña",
+        pattern: {
+          value: /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+          message: "Incluye al menos 1 letra mayúscula, 1 número y 1 carácter especial"
+        },
+        minLength: {
+          value: 8,
+          message: "Contraseña demasiado corta"
+        }
       })} />
+      {errors.password && <ValidationError message={errors.password.message} />}
       <Input size='lg' type="email" placeholder="email" {...register('email', {
-        required: true
+        required: "Introduce un email"
       })} />
-
+      {errors.email && <ValidationError message={errors.email.message} />}
       <Center>
         <Button variant='outline' colorScheme="teal" type="submit" marginTop='7' >Enviar</Button>
       </Center>
@@ -185,7 +212,22 @@ export function AddCatForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Input size='lg' {...register('name', { required: true })} placeholder="Nombre de la categoría" />
+      <Input size='lg' {...register('name', {
+        required: "La categoría necesita un nombre",
+        minLength: {
+          value: 4,
+          message: "Inserta al menos 4 caracteres"
+        },
+        maxLength: {
+          value: 20,
+          message: "Inserta máximo 20 caracteres"
+        },
+        pattern: {
+          value: /^[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ\s\-]+$/,
+          message: "No uses números o caracteres extraños",
+        },
+      })} placeholder="Nombre de la categoría" />
+      {errors.name && <ValidationError message={errors.name.message} />}
       <Center>
         <Button variant='outline' colorScheme="teal" type="submit" marginTop='7'>Enviar</Button>
       </Center>
