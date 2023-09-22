@@ -19,7 +19,7 @@ function App() {
 
   useEffect(() => {
     const authToken = localStorage.getItem('auth-token')
-    if(authToken){
+    if (authToken) {
       setLoggedIn(true)
     }
   }, [])
@@ -32,11 +32,11 @@ function App() {
         <Route path='/' element={<Categories />} />
         <Route path='/tutorials/:categoryId' element={<Tutorials />} />
         <Route path='/login' element={<Login />} />
-        <Route path='/tutorials/add' element={<AddTutorial />} />
+        <Route path='/tutorials/add' element={loggedIn ? <AddTutorial /> : <Navigate to='/login' />} />
         <Route path='/signup' element={<Signup />} />
-        <Route path='/user/:userId' element={<Dashboard />} />
-        <Route path='/admin/:userId' element={<AdminDashboard />} />
-        <Route path='/categories/add' element={<AddCat />} />
+        <Route path='/user/:userId' element={loggedIn ? <Dashboard /> : <Navigate to='/login' />} />
+        <Route path='/admin/:userId' element={loggedIn ? <AdminDashboard /> : <Navigate to='/login' />} />
+        <Route path='/categories/add' element={loggedIn ? <AddCat /> : <Navigate to='/login' />} />
         <Route path='/404' element={<Error404 />} />
       </Routes>
       <UpButton />
