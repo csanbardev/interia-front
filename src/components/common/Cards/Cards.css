@@ -55,6 +55,17 @@
   font-weight: 600;
 }
 
+.tuto-likes{
+  color: var(--accent);
+  margin-top: 1.3rem;
+  font-weight: 600;
+  font-size: 1.3rem;
+}
+
+.tuto-likes::after, .tuto-likes::before{
+  color: white;
+  content: " — ";
+}
 
 .report-button-container button:first-child::after{
   content: "Eliminar video";

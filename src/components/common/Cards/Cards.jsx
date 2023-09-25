@@ -1,6 +1,6 @@
 import { ExternalLinkIcon, LinkIcon, SunIcon, WarningIcon, CheckIcon } from '@chakra-ui/icons';
 import './Cards.css'
-import { Heading, Icon, Image, useToast, Text, Button } from "@chakra-ui/react";
+import { Heading, Icon, Image, useToast, Text, Button, Center } from "@chakra-ui/react";
 import { Link } from 'react-router-dom';
 import { handleLike } from '../../../handlers/handleLike';
 import { useContext, useEffect, useState } from 'react';
@@ -48,7 +48,7 @@ export function PendingCategoryCard({ title, token, id , api }) {
   )
 }
 
-export function TutorialCard({ img, title, url, id, length }) {
+export function TutorialCard({ img, title, url, id, length, likes }) {
   const toast = useToast()
 
   const [liked, setLiked] = useState(false)
@@ -147,6 +147,9 @@ export function TutorialCard({ img, title, url, id, length }) {
           <button onClick={onReport} ><WarningIcon /></button>
           <button><Link to={url} ><ExternalLinkIcon /></Link></button>
         </div>
+        <Center>
+          <Text className='tuto-likes'>{likes || "Sin"} likes</Text>
+        </Center>
       </div>
     </article>
   )
