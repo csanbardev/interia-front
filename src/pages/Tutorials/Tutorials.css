@@ -5,8 +5,16 @@
   gap: 2rem;
 }
 
+.pagination-container{
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
 @media screen and (min-width: 1200px) {
-  #tutorials{
+
+  .tutorials-container{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
     grid-template-rows: minmax(auto, max-content);
