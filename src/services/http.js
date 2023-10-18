@@ -1,4 +1,4 @@
-export const postReq = async (url, data, token) => {
+export const postReq = async (url, data, token="") => {
 
   try {
     const response = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` }, body: JSON.stringify(data) })

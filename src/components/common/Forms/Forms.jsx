@@ -236,13 +236,14 @@ export function AddCatForm() {
 }
 
 export function ContactForm() {
-
+  const [error, setError] = useState(null)
   const { register, formState: { errors }, handleSubmit, reset } = useForm()
   const toast = useToast()
 
   const onSubmit = async (data) => {
     try {
-      const res = await postReq(`${api}/contact`, data, token)
+      const res = await postReq(`${api}/contact`, data)
+      console.log(res)
       resetForm(reset, setError)
       toast({
         title: '¡Se ha enviado tu mensaje!',
