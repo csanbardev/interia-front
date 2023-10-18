@@ -1,0 +1,9 @@
+#contact-page{
+  text-align: center;
+  display: grid;
+  gap: 3rem;
+}
+
+#contact-page h3{
+  margin-bottom: 1.7rem;
+}

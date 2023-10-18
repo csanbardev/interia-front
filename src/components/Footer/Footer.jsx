@@ -21,7 +21,7 @@ export function Footer() {
           <ul>
             <li><Link to='/' >Inicio</Link></li>
             {token ? (<FooterAuth role={role} userId={id}  />) : (<FooterNonAuth />)}
-            <li><Link to='/contacto' >Contacto</Link></li>
+            <li><Link to='/contact' >Contacto</Link></li>
           </ul>
         </nav>
       </article>

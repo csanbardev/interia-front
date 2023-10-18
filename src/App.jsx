@@ -14,6 +14,7 @@ import { Error404 } from './components/error-pages/Error404/Error404'
 import { Footer } from './components/Footer/Footer'
 import { UpButton } from './components/common/UpButton/UpButton'
 import { AuthContext } from './services/AuthContext'
+import { ContactPage } from './pages/ContactPage/ContactPage'
 
 function App() {
   const {token} = useContext(AuthContext)
@@ -25,6 +26,7 @@ function App() {
       <Routes>
         <Route path='*' element={<Navigate to='/404' />} />
         <Route path='/' element={<Categories />} />
+        <Route path='/contact' element={<ContactPage />} />
         <Route path='/tutorials/:categoryId' element={<Tutorials />} />
         <Route path='/login' element={<Login />} />
         <Route path='/tutorials/add' element={token ? <AddTutorial /> : <Navigate to='/login' />} />
