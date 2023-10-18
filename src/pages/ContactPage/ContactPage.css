@@ -7,3 +7,12 @@
 #contact-page h3{
   margin-bottom: 1.7rem;
 }
+
+#contact-page #faq{
+  margin-left: 11rem;
+  margin-right: 11rem;
+}
+
+#contact-page #faq .chakra-accordion{
+  text-align: left;
+}
