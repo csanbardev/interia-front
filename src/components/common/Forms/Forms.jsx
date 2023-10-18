@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react'
-import { Input, InputGroup, InputLeftElement, Select, Button, Center, Text, Alert, AlertIcon, useToast } from "@chakra-ui/react"
+import { Input, InputGroup, InputLeftElement, Select, Button, Center, Text, Alert, AlertIcon, useToast, Textarea } from "@chakra-ui/react"
 import { LinkIcon } from "@chakra-ui/icons"
 import { Link } from 'react-router-dom'
 import './Forms.css'
@@ -232,5 +232,86 @@ export function AddCatForm() {
         <Button variant='outline' colorScheme="teal" type="submit" marginTop='7'>Enviar</Button>
       </Center>
     </form>
+  )
+}
+
+export function ContactForm() {
+
+  const { register, formState: { errors }, handleSubmit, reset } = useForm()
+  const toast = useToast()
+
+  const onSubmit = async (data) => {
+    try {
+      const res = await postReq(`${api}/contact`, data, token)
+      resetForm(reset, setError)
+      toast({
+        title: '¡Se ha enviado tu mensaje!',
+        status: 'success',
+        duration: 2000,
+        isClosable: true
+      })
+    } catch (error) {
+      toast({
+        title: 'Ha habido un error',
+        description: error.message,
+        status: 'error',
+        duration: 2000,
+        isClosable: true
+      })
+    }
+  }
+
+  return (
+    <>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <Input type='text' placeholder='Tu nombre' {...register('name', {
+          required: "Indica tu nombre",
+          minLength: {
+            value: 4,
+            message: "Inserta al menos 4 caracteres"
+          },
+          maxLength: {
+            value: '20',
+            message: "Inserta máximo 20 caracteres"
+          },
+          pattern: {
+            value: /^[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ\s\-]+$/,
+            message: "No uses números o caracteres extraños",
+          }
+        })} />
+        {errors.name && <ValidationError message={errors.name.message} />}
+        <Input type='email' placeholder='Tu Email' {...register('email', {
+          required: "¡No te olvides del email!"
+        })} />
+        {errors.email && <ValidationError message={errors.email.message} />}
+        <Input type='text' placeholder='Asunto' {...register('asunto', {
+          required: "Indica el asunto",
+          minLength: {
+            value: 6,
+            message: "Inserta al menos 6 caracteres"
+          },
+          maxLength: {
+            value: 30,
+            message: "Máximo 30 caracteres"
+          }
+        })} />
+        {errors.asunto && <ValidationError message={errors.asunto.message} />}
+        <Textarea placeholder='Mensaje' {...register('mensaje', {
+          required: "Indica tu mensaje",
+          minLength: {
+            value: 20,
+            message: "Inserta al menos 20 caracteres"
+          },
+          maxLength: {
+            value: 300,
+            message: "Máximo 300 caracteres"
+          }
+        })} />
+        {errors.mensaje && <ValidationError message={errors.mensaje.message} />}
+        <Center>
+          <Button variant='outline' colorScheme="teal" type="submit" marginTop='7'>Enviar</Button>
+        </Center>
+      </form>
+    </>
   )
 }
