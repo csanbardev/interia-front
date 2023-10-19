@@ -6,7 +6,7 @@ export function ContactPage() {
   return (
     <section className="spaced" id="contact-page">
       <section id="contact-page-banner">
-        <Heading as='h2' fontSize='5xl'>Contacta con nosotros</Heading>
+        <h2>Contacta con nosotros</h2>
         <Heading as='h4' fontSize='md' >Dinos en qué podemos ayudarte</Heading>
       </section>
 

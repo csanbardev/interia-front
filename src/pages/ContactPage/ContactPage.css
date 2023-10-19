@@ -1,18 +1,32 @@
 #contact-page{
+  margin-top: 3rem;
+  margin-bottom: 3rem;
   text-align: center;
   display: grid;
   gap: 3rem;
 }
 
+#contact-page h2 {
+  margin-bottom: .7rem;
+}
+
+#contact-page h4{
+  letter-spacing: .1rem;
+}
+
 #contact-page h3{
+  letter-spacing: .2rem;
   margin-bottom: 1.7rem;
 }
 
-#contact-page #faq{
-  margin-left: 11rem;
-  margin-right: 11rem;
-}
 
 #contact-page #faq .chakra-accordion{
   text-align: left;
+}
+
+@media screen and (min-width: 1200px) {
+  #contact-page #faq{
+    margin-left: 11rem;
+    margin-right: 11rem;
+  }
 }
