@@ -15,6 +15,7 @@ import { Footer } from './components/Footer/Footer'
 import { UpButton } from './components/common/UpButton/UpButton'
 import { AuthContext } from './services/AuthContext'
 import { ContactPage } from './pages/ContactPage/ContactPage'
+import { Home } from './pages/Home/Home'
 
 function App() {
   const {token} = useContext(AuthContext)
@@ -25,7 +26,7 @@ function App() {
       <Nav />
       <Routes>
         <Route path='*' element={<Navigate to='/404' />} />
-        <Route path='/' element={<Categories />} />
+        <Route path='/' element={<Home />} />
         <Route path='/contact' element={<ContactPage />} />
         <Route path='/tutorials/:categoryId' element={<Tutorials />} />
         <Route path='/login' element={<Login />} />

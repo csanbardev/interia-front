@@ -32,8 +32,7 @@ export function Categories() {
           ))}
         </Suspense>
       </SimpleGrid>
-      <Divider marginTop='100' />
-      <ContactArea />
+      
     </section>
   )
 }
