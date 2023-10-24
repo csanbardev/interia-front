@@ -13,9 +13,31 @@ const api = import.meta.env.VITE_API_URL
 export function Tutorials() {
   const [currentPage, setCurrentPage] = useState(1)
   const { categoryId } = useParams()
-  const { data, loading, error, handleCancelRequest } = useFetch(
-    `${api}/tutorials?category=${categoryId}&page=${currentPage}`
-  )
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  
+  useEffect(() => {
+    // Define una función asincrónica para hacer la llamada a la API.
+    async function fetchData() {
+      try {
+        setLoading(true);
+        const response = await fetch(`${api}/tutorials?category=${categoryId}&page=${currentPage}`);
+        if (!response.ok) {
+          throw new Error(`HTTP Error! Status: ${response.status}`);
+        }
+        const jsonData = await response.json();
+        setData(jsonData);
+        setLoading(false);
+      } catch (error) {
+        setError(error.message);
+        setLoading(false);
+      }
+    }
+
+    // Llama a fetchData() cuando cambie currentPage.
+    fetchData();
+  }, [currentPage]);
 
   if (error && error.includes('404')) {
     return <NoneTutorial />

@@ -16,7 +16,7 @@ export function Categories() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  console.log(data)
+  
 
   useEffect(() => {
     // Define una función asincrónica para hacer la llamada a la API.
