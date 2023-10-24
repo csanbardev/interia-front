@@ -16,6 +16,8 @@ export function Categories() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  console.log(data)
+
   useEffect(() => {
     // Define una función asincrónica para hacer la llamada a la API.
     async function fetchData() {
@@ -65,7 +67,7 @@ export function Categories() {
         >Anterior</Button>
         <Button
           onClick={() => setCurrentPage(currentPage + 1)}
-          isDisabled={currentPage === data?.pagination.totalPages -1}
+          isDisabled={currentPage === data?.pagination.totalPages}
         >Siguiente</Button>
       </div>
     </section>
