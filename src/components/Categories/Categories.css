@@ -5,6 +5,13 @@
   color: #c9c3c3;
 }
 
+.pagination-container{
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
 #categories-title {
   font-size: 2.6rem;
   letter-spacing: .4rem;

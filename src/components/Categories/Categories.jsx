@@ -1,18 +1,44 @@
 import './Categories.css'
-import { Suspense } from 'react';
-import { Divider, SimpleGrid } from '@chakra-ui/react';
+import { Suspense, useEffect, useState } from 'react';
+import { Button, Divider, SimpleGrid } from '@chakra-ui/react';
 import { CategoryCard } from "../common/Cards/Cards";
 import { useFetch } from '../../hooks/useFetch';
 import { ContactArea } from '../Contact/Contact';
+import { Error500 } from '../error-pages/Error500/Error500';
 
 const api = import.meta.env.VITE_API_URL
 
 
 export function Categories() {
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const { data, loading, error, handleCancelRequest } = useFetch(`${api}/categories`)
+  useEffect(() => {
+    // Define una función asincrónica para hacer la llamada a la API.
+    async function fetchData() {
+      try {
+        setLoading(true);
+        const response = await fetch(`${api}/categories?page=${currentPage}`);
+        if (!response.ok) {
+          throw new Error(`HTTP Error! Status: ${response.status}`);
+        }
+        const jsonData = await response.json();
+        setData(jsonData);
+        setLoading(false);
+      } catch (error) {
+        setError(error.message);
+        setLoading(false);
+      }
+    }
 
+    // Llama a fetchData() cuando cambie currentPage.
+    fetchData();
+  }, [currentPage]);
+
+  
   if (error && error.includes('404')) {
     return <Error404 />
   }
@@ -23,16 +49,25 @@ export function Categories() {
 
 
   return (
-    <section className='spaced total-height' id="categories" >
+    <section className='spaced' id="categories" >
       <h2 id="categories-title">Un mundo por <span>aprender</span></h2>
       <SimpleGrid id='gridder'>
         <Suspense fallback={<div>Loading...</div>} >
-          {data?.map((item) => (
+          {data?.data.map((item) => (
             <CategoryCard title={item.name} key={item.id_category} img={`${api}/${item.category_img}`} url={'tutorials/' + item.id_category} />
           ))}
         </Suspense>
       </SimpleGrid>
-      
+      <div className="pagination-container">
+        <Button
+          onClick={() => setCurrentPage(currentPage - 1)}
+          isDisabled={currentPage === 1}
+        >Anterior</Button>
+        <Button
+          onClick={() => setCurrentPage(currentPage + 1)}
+          isDisabled={currentPage === data?.pagination.totalPages -1}
+        >Siguiente</Button>
+      </div>
     </section>
   )
 }
