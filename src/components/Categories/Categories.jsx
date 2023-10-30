@@ -1,8 +1,9 @@
 import './Categories.css'
 import { Suspense, useEffect, useState } from 'react';
-import { Button, Divider, Input, SimpleGrid } from '@chakra-ui/react';
+import { Button, Divider, Input, InputGroup, InputLeftElement, SimpleGrid } from '@chakra-ui/react';
 import { CategoryCard } from "../common/Cards/Cards";
 import { Error500 } from '../error-pages/Error500/Error500';
+import { SearchIcon } from '@chakra-ui/icons';
 
 const api = import.meta.env.VITE_API_URL
 
@@ -16,7 +17,7 @@ export function Categories() {
   const [error, setError] = useState(null);
 
   const handleFilter = (event) => {
-    setFilter(event.target.value+'%')
+    setFilter(event.target.value + '%')
   }
 
   useEffect(() => {
@@ -54,7 +55,12 @@ export function Categories() {
   return (
     <section className='spaced' id="categories" >
       <h2 id="categories-title">Un mundo por <span>aprender</span></h2>
-      <Input type="text" placeholder='Busca tu categoría' name='filtro' onChange={handleFilter} />
+      <InputGroup>
+        <InputLeftElement>
+          <SearchIcon />
+        </InputLeftElement>
+        <Input type="text" placeholder='Busca tu categoría' name='filtro' onChange={handleFilter} width='50' marginBottom='5' />
+      </InputGroup>
       <SimpleGrid id='gridder'>
         <Suspense fallback={<div>Loading...</div>} >
           {data?.data.map((item) => (
