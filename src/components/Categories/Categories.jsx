@@ -1,6 +1,6 @@
 import './Categories.css'
 import { Suspense, useEffect, useState } from 'react';
-import { Button, Divider, Input, InputGroup, InputLeftElement, SimpleGrid } from '@chakra-ui/react';
+import { Button, Center, Divider, Input, InputGroup, InputLeftElement, SimpleGrid, Stack } from '@chakra-ui/react';
 import { CategoryCard } from "../common/Cards/Cards";
 import { Error500 } from '../error-pages/Error500/Error500';
 import { SearchIcon } from '@chakra-ui/icons';
@@ -54,13 +54,17 @@ export function Categories() {
 
   return (
     <section className='spaced' id="categories" >
-      <h2 id="categories-title">Un mundo por <span>aprender</span></h2>
-      <InputGroup>
+     
+    <div className='category-search'>
+
+      <InputGroup marginBottom='52'>
         <InputLeftElement>
           <SearchIcon />
         </InputLeftElement>
-        <Input type="text" placeholder='Busca tu categoría' name='filtro' onChange={handleFilter} width='50' marginBottom='5' />
+        <Input type="text" placeholder='Busca tu categoría' name='filtro' onChange={handleFilter} width='50' />
       </InputGroup>
+    </div>
+     
       <SimpleGrid id='gridder'>
         <Suspense fallback={<div>Loading...</div>} >
           {data?.data.map((item) => (

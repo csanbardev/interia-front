@@ -1,14 +1,32 @@
 #banner{
+  position: absolute;
   width: 100vw;
-  height: 100vh;
+  height: 70vh;
   background-image: url(../../assets/banner-img.jpg);
   background-position: left left;
   background-size: cover;
   background-attachment: fixed;
-
   text-align: center;
+  opacity: 0.5;
 }
 
 #banner h1{
-  padding-top: 8rem;
+  font-size: 3.7rem !important;
+  letter-spacing: .3rem;
+}
+#banner h3{
+  font-size: 1.3rem !important;
+  margin-top: 7rem;
+  line-height: 0;
+}
+
+
+@media screen and (min-width: 1200px) {
+  #banner h1{
+    font-size: 7rem !important;
+    letter-spacing: 1rem;
+  }
+  #banner h3{
+    letter-spacing: .1rem;
+  }
 }
