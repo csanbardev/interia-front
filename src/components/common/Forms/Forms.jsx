@@ -20,7 +20,7 @@ export function AddTutoForm() {
   const { register, formState: { errors }, handleSubmit, reset } = useForm()
   const toast = useToast()
 
-  const { data, loading, error } = useFetch(api + '/categories')
+  const { data, loading, error } = useFetch(api + '/categoriesFull')
 
 
   const onSubmit = async (data) => {
