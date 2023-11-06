@@ -16,7 +16,7 @@ export function FavTutorials({userId}){
   return(
     <section id="fav-tutorials">
       {data?.map((item) => (
-        <p>{<TutorialCard img={item.src_image} title={item.title} url={item.url} id={item.id_tutorial} />}</p>
+        <TutorialCard img={item.src_image} title={item.title} url={item.url} id={item.id_tutorial} />
       ))}
       {error && error.includes('404') ? <EmptyAdvert message={"Nada por aquí..."} /> : null}
     </section>

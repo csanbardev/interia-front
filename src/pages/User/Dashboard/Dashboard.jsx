@@ -19,10 +19,32 @@ export function Dashboard() {
   const { register, formState: { errors }, handleSubmit } = useForm()
   const { token, nick, logout, avatar, id, refreshAvatar } = useContext(AuthContext)
   const { userId } = useParams()
-  const { data, loading, error, handleCancelRequest } = useFetch(`${api}/tutorials/user/${userId}`, 'GET', undefined, token)
+  const [data, setData] = useState(null)
+  //const { data, loading, error, handleCancelRequest } = useFetch(`${api}/tutorials/user/${userId}`, 'GET', undefined, token)
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [saving, setSaving] = useState(false)
   const cancelRef = useRef()
+
+
+
+  useEffect(() => {
+    // Define una función asincrónica para hacer la llamada a la API.
+    async function fetchData() {
+      try {
+        const response = await fetch(`${api}/tutorials/user/${userId}`, { method: 'GET', headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` } });
+        if (!response.ok) {
+          throw new Error(`HTTP Error! Status: ${response.status}`);
+        }
+        const jsonData = await response.json();
+        setData(jsonData);
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    // Llama a fetchData() cuando cambie currentPage.
+    fetchData();
+  }, [data]);
 
   const handleDeleteUser = async () => {
     try {
@@ -30,6 +52,16 @@ export function Dashboard() {
       logout()
     } catch (error) {
       console.log(error)
+    }
+  }
+
+
+  const handleDeleteTuto = async (id) => {
+    try {
+      await deleteReq(`${api}/tutorials/${id}`, undefined, token)
+      // window.location.reload()
+    } catch (error) {
+
     }
   }
 
@@ -72,7 +104,7 @@ export function Dashboard() {
       <Heading as='h3' size='md' >Tutoriales propuestos</Heading>
       <Accordion allowToggle>
         {data?.map((item) => (
-          <DashboardAccordion key={item.id_tutorial} title={item.title} category={item.name} url={item.url} state={item.approved} id={item.id_tutorial} />
+          <DashboardAccordion key={item.id_tutorial} title={item.title} category={item.name} url={item.url} state={item.approved} id={item.id_tutorial} onDelete={handleDeleteTuto} />
         ))}
       </Accordion>
       {!data ? <EmptyAdvert message='Nada por aquí...' /> : null}

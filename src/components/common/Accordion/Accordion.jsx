@@ -7,19 +7,14 @@ import { handleApprove } from "../../../handlers/handleApprove"
 import { deleteReq } from "../../../services/http"
 import { useFetch } from "../../../hooks/useFetch"
 
-export function DashboardAccordion({ title, state, url, category, id }) {
+export function DashboardAccordion({ title, state, url, category, id, onDelete }) {
   const {token} = useContext(AuthContext)
   const api = import.meta.env.VITE_API_URL
   const { isOpen, onOpen, onClose } = useDisclosure()
   const cancelRef = useRef()
 
-  const handleDeleteTuto = async () => {
-    try {
-      await deleteReq(`${api}/tutorials/${id}`, undefined, token)
-      window.location.reload()
-    } catch (error) {
-      
-    }
+  const handleDeleteTuto = () => {
+    onDelete(id)
   }
 
   return (
