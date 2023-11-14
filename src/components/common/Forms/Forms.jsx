@@ -26,7 +26,7 @@ export function AddTutoForm() {
   const onSubmit = async (data) => {
     try {
       const res = await postReq(`${api}/tutorials`, data, token)
-      resetForm(reset, setError)
+      resetForm(reset)
       toast({
         title: 'Tutorial propuesto con éxito',
         status: 'success',
@@ -35,7 +35,6 @@ export function AddTutoForm() {
       })
     } catch (error) {
       let errorMessage = ""
-
       if (error.message.includes('500')) {
         errorMessage = "Algo ha ido muy mal"
       } else if (error.message.includes('401')) {

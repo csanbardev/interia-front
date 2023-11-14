@@ -8,5 +8,4 @@
  */
 export const resetForm = (reset, setError) => {
   reset()
-  setError('')
 }
