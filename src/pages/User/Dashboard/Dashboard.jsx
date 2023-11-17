@@ -2,8 +2,7 @@ import './Dashboard.css'
 import { CheckIcon, EditIcon, WarningTwoIcon } from "@chakra-ui/icons"
 import { Heading, Accordion, Divider, Stack, Button, useDisclosure, AlertDialog, AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogBody, AlertDialogFooter, Avatar, Center, useToast } from "@chakra-ui/react"
 import { useForm } from 'react-hook-form'
-import { Link, useParams } from "react-router-dom"
-import { useFetch } from "../../../hooks/useFetch"
+import { useParams } from "react-router-dom"
 import { useContext, useEffect, useRef, useState } from "react"
 import { AuthContext } from "../../../services/AuthContext"
 import { DashboardAccordion } from "../../../components/common/Accordion/Accordion"
@@ -70,8 +69,9 @@ export function Dashboard() {
     formData.avatar = data.avatar[0]
 
     try {
-      const res = await patchAvatar(`${api}/userAvatar/${id}`, data, token)
-      refreshAvatar(res.url)
+      const {avatar_url} = await patchAvatar(`${api}/userAvatar/${id}`, data, token)
+     
+      refreshAvatar(avatar_url)
       setSaving(false)
 
       toast({
@@ -104,7 +104,7 @@ export function Dashboard() {
       <Heading as='h3' size='md' >Tutoriales propuestos</Heading>
       <Accordion allowToggle>
         {data?.map((item) => (
-          <DashboardAccordion key={item.id_tutorial} title={item.title} category={item.name} url={item.url} state={item.approved} id={item.id_tutorial} onDelete={handleDeleteTuto} />
+          <DashboardAccordion key={item.tut_id} title={item.tut_title} category={item.tut_name} url={item.tut_url} state={item.tut_approved} id={item.tut_id} onDelete={handleDeleteTuto} />
         ))}
       </Accordion>
       {!data ? <EmptyAdvert message='Nada por aquí...' /> : null}

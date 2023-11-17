@@ -72,7 +72,7 @@ export function AddTutoForm() {
         required: 'Indica una categoría'
       })} required>
         {data?.map((item) => (
-          <option value={item.id_category} key={item.id_category}>{item.name}</option>
+          <option value={item.cat_id} key={item.catid}>{item.cat_name}</option>
         ))}
       </Select>
       {errors.id_category && <ValidationError message={errors.id_category?.message} />}

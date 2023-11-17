@@ -47,7 +47,7 @@ export const patchAvatar = async (url, data, token) => {
       throw new Error(response.status);
     }
 
-    return response.json();
+    return response.json()
 
   } catch (error) {
     console.error('Error en patchAvatar:', error);
