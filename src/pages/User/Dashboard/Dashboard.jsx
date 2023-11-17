@@ -70,8 +70,8 @@ export function Dashboard() {
     formData.avatar = data.avatar[0]
 
     try {
-      const res = await patchAvatar(`${api}/userAvatar/${id}`, data, token)
-      refreshAvatar(res.url)
+      const { avatar_url } = await patchAvatar(`${api}/userAvatar/${id}`, data, token)
+      refreshAvatar(avatar_url)
       setSaving(false)
 
       toast({
