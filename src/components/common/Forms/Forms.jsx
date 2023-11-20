@@ -161,7 +161,7 @@ export function SignupForm() {
       <Input size='lg' type="password" placeholder="Contraseña" {...register('password', {
         required: "Introduce una contraseña",
         pattern: {
-          value: /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+          value: /^(?=.*[A-Z])(?=.*\d)(?=.*[^\w\d\s]).{8,}$/,
           message: "Incluye al menos 1 letra mayúscula, 1 número y 1 carácter especial"
         },
         minLength: {
