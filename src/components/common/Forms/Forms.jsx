@@ -160,10 +160,7 @@ export function SignupForm() {
       {errors.nick && <ValidationError message={errors.nick.message} />}
       <Input size='lg' type="password" placeholder="Contraseña" {...register('password', {
         required: "Introduce una contraseña",
-        pattern: {
-          value: /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-          message: "Incluye al menos 1 letra mayúscula, 1 número y 1 carácter especial"
-        },
+        
         minLength: {
           value: 8,
           message: "Contraseña demasiado corta"
@@ -242,7 +239,6 @@ export function ContactForm() {
   const onSubmit = async (data) => {
     try {
       const res = await postReq(`${api}/contact`, data)
-      console.log(res)
       resetForm(reset, setError)
       toast({
         title: '¡Se ha enviado tu mensaje!',

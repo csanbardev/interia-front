@@ -10,9 +10,6 @@ export function RecentTutorials() {
   const { token } = useContext(AuthContext)
   const { data } = useFetch(`${api}/tutorials/filter?order=recent`, 'GET', undefined, token)
 
-
-  console.log(data)
-
   return (
     <section className="spaced">
       <h2>Tutoriales recientes</h2>
@@ -28,9 +25,6 @@ export function RecentTutorials() {
 export function LikestTutorials() {
   const { token } = useContext(AuthContext)
   const { data } = useFetch(`${api}/tutorials/filter?order=likest`, 'GET', undefined, token)
-
-
-  console.log(data)
 
   return (
     <section className="spaced">

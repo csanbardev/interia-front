@@ -37,7 +37,7 @@ export function Dashboard() {
         const jsonData = await response.json();
         setData(jsonData);
       } catch (error) {
-        console.log(error)
+        //console.log(error)
       }
     }
 
