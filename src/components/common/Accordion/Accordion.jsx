@@ -24,7 +24,7 @@ export function DashboardAccordion({ title, state, url, category, id, onDelete }
           <AccordionButton>
             <Box as="span" flex='1' textAlign='left' >
               {title}
-              <Badge ml='1' colorScheme={state === '0' ? 'green' : 'yellow'} >{state === '0' ? 'Aprobado' : 'Pendiente'}</Badge>
+              <Badge ml='1' colorScheme={state === '1' ? 'green' : 'yellow'} >{state === '1' ? 'Aprobado' : 'Pendiente'}</Badge>
             </Box>
             <AccordionIcon />
           </AccordionButton>
