@@ -1,7 +1,7 @@
 import { ExternalLinkIcon, LinkIcon, SunIcon, WarningIcon, CheckIcon } from '@chakra-ui/icons';
 import './Cards.css'
 import { Heading, Icon, Image, useToast, Text, Button, Center } from "@chakra-ui/react";
-import { Link } from 'react-router-dom';
+import { Link, json } from 'react-router-dom';
 import { handleLike } from '../../../handlers/handleLike';
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../services/AuthContext';
@@ -9,7 +9,7 @@ import { deleteReq, getReq, patchAvatar, postReq } from '../../../services/http'
 import { useForm } from 'react-hook-form';
 
 
-export function CategoryCard({ img, url, title}) {
+export function CategoryCard({ img, url, title }) {
   return (
     <Link to={url} className="category-card">
       <Image className='category-img' src={img} alt="" borderRadius='lg' />
@@ -20,7 +20,7 @@ export function CategoryCard({ img, url, title}) {
   )
 }
 
-export function PendingCategoryCard({ title, token, id , api }) {
+export function PendingCategoryCard({ title, token, id, api }) {
   const { register, formState: { errors }, handleSubmit } = useForm()
 
 
@@ -48,25 +48,29 @@ export function PendingCategoryCard({ title, token, id , api }) {
   )
 }
 
-export function TutorialCard({ img, title, url, id, length, likes }) {
+export function TutorialCard({ img, title, url, id, length }) {
   const toast = useToast()
 
   const [liked, setLiked] = useState(false)
+  const [likes, setLikes] = useState(0)
   const { token } = useContext(AuthContext)
   const api = import.meta.env.VITE_API_URL
 
+  // get likes when comp. load or state liked change 
   useEffect(() => {
+    getReq(`${api}/likes/${id}`, token)
+      .then((res) => {
+        setLikes(res.cant_likes)
+      })
+      .catch((error) => { console.log(error) })
     if (token) {
-
-      getReq(`${api}/likes/${id}`, token)
+      getReq(`${api}/likes/liked/${id}`, token)
         .then((res) => {
-          setLiked(true)
+          res.total > 0 ? setLiked(true) : setLiked(false)
         })
-        .catch((error) => { })
-
-
+        .catch((error) => { console.log(error) })
     }
-  }, [id, token])
+  }, [liked])
 
   const onLike = async () => {
     try {
