@@ -16,6 +16,7 @@ import { UpButton } from './components/common/UpButton/UpButton'
 import { AuthContext } from './services/AuthContext'
 import { ContactPage } from './pages/ContactPage/ContactPage'
 import { Home } from './pages/Home/Home'
+import { ScrollToTop } from './utils/ScrollToTop'
 
 function App() {
   const {token} = useContext(AuthContext)
@@ -24,6 +25,7 @@ function App() {
   return (
     <>
       <Nav />
+      <ScrollToTop />
       <Routes>
         <Route path='*' element={<Navigate to='/404' />} />
         <Route path='/' element={<Home />} />
