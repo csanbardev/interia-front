@@ -2,6 +2,7 @@ import { useContext } from "react"
 import { useFetch } from "../../hooks/useFetch"
 import { AuthContext } from "../../services/AuthContext"
 import { TutorialCard } from "../common/Cards/Cards"
+import './HomeTutorials.css'
 
 const api = import.meta.env.VITE_API_URL
 
@@ -11,7 +12,7 @@ export function RecentTutorials() {
   const { data } = useFetch(`${api}/tutorials/filter?order=recent`, 'GET', undefined, token)
 
   return (
-    <section className="spaced">
+    <section id="recent-tutorials" className="spaced">
       <h2>Tutoriales recientes</h2>
       <div className="tutorials-container">
       {data?.map((item) => (
@@ -27,7 +28,7 @@ export function LikestTutorials() {
   const { data } = useFetch(`${api}/tutorials/filter?order=likest`, 'GET', undefined, token)
 
   return (
-    <section className="spaced">
+    <section id="likest-tutorials" className="spaced">
       <h2>Tutoriales más gustados</h2>
       <div className="tutorials-container">
       {data?.map((item) => (

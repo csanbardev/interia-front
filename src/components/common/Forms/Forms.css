@@ -4,11 +4,23 @@ form{
   gap: 1rem;
   padding: 1.7rem;
   border-radius: 10px;
-  border: 1px solid var(--accent);
+  background: var(--main-second-color);
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
 }
 
-form input{
+form button{
+  background-color: var(--accent) !important;
+  color: var(--main-second-color) !important;
+  font-weight: 800 !important;
+}
+
+form input, form textarea{
   border-color: var(--fonts) !important;
+}
+
+form input::placeholder, form textarea::placeholder{
+  color: white !important;
+  font-weight: 700;
 }
 
 

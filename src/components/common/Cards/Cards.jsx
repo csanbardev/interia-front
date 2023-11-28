@@ -14,7 +14,7 @@ export function CategoryCard({ img, url, title }) {
     <Link to={url} className="category-card">
       <Image className='category-img' src={img} alt="" borderRadius='lg' />
       <div className="over-content">
-        <Heading className='category-title' as='h3' textAlign='center' color='wheat'>{title}</Heading>
+        <Heading className='category-title' as='h3' textAlign='center'>{title}</Heading>
       </div>
     </Link>
   )

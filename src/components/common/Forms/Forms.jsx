@@ -57,7 +57,7 @@ export function AddTutoForm() {
         <InputLeftElement pointerEvents='none'>
           <LinkIcon color='gray.300' />
         </InputLeftElement>
-        <Input size='lg' variant='outline' type="url" placeholder="YouTube url" {...register('url', {
+        <Input size='lg' variant='solid' type="url" placeholder="YouTube url" {...register('url', {
           required: 'Inserta una URL de YouTube',
           pattern: {
             value: /^(https?:\/\/)?(www\.)?(youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)(\S*)?$/,
@@ -79,7 +79,7 @@ export function AddTutoForm() {
 
       <Text mt='5' textAlign='center'>¿Falta una categoría? <Link to='/categories/add'>Sugerir</Link></Text>
       <Center>
-        <Button variant='outline' colorScheme="teal" type="submit" marginTop='7' >Enviar</Button>
+        <Button variant='solid' colorScheme="teal" type="submit" marginTop='7' >Enviar</Button>
       </Center>
     </form>
   )
@@ -117,7 +117,7 @@ export function LoginForm() {
       })} />
       {errors.password && <ValidationError message={errors.password.message} />}
       <Center>
-        <Button variant='outline' colorScheme="teal" type="submit" marginTop='7' >Enviar</Button>
+        <Button variant='solid' colorScheme="teal" type="submit" marginTop='7' >Enviar</Button>
       </Center>
     </form>
   )
@@ -175,7 +175,7 @@ export function SignupForm() {
       })} />
       {errors.email && <ValidationError message={errors.email.message} />}
       <Center>
-        <Button variant='outline' colorScheme="teal" type="submit" marginTop='7' >Enviar</Button>
+        <Button variant='solid' colorScheme="teal" type="submit" marginTop='7' >Enviar</Button>
       </Center>
     </form>
   )
@@ -228,7 +228,7 @@ export function AddCatForm() {
       })} placeholder="Nombre de la categoría" />
       {errors.name && <ValidationError message={errors.name.message} />}
       <Center>
-        <Button variant='outline' colorScheme="teal" type="submit" marginTop='7'>Enviar</Button>
+        <Button variant='solid' colorScheme="teal" type="submit" marginTop='7'>Enviar</Button>
       </Center>
     </form>
   )
@@ -308,7 +308,7 @@ export function ContactForm() {
         })} />
         {errors.mensaje && <ValidationError message={errors.mensaje.message} />}
         <Center>
-          <Button variant='outline' colorScheme="teal" type="submit" marginTop='7'>Enviar</Button>
+          <Button variant='solid' type="submit" marginTop='7'>Enviar</Button>
         </Center>
       </form>
     </>

@@ -41,6 +41,12 @@
   width: 100%;
 }
 
+.category-search input::placeholder{
+  color: white !important;
+  font-weight: 700;
+}
+
+
 .category-card {
   position: relative;
 }

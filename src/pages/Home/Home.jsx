@@ -9,11 +9,8 @@ export function Home(){
     <>
       <Banner />
       <Categories />
-      <Divider marginTop='100' />
       <RecentTutorials />
-      <Divider />
       <LikestTutorials />
-      <Divider />
       <ContactArea />
     </>
   )

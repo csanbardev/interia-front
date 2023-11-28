@@ -1,5 +1,6 @@
 nav{
-  margin-top: 1rem;
+  margin-top: .8rem;
+  margin-bottom: .5rem;
   top: 0;
   position:static;
   display: flex;
@@ -13,8 +14,9 @@ nav .session-link:first-of-type{
 
 #logo{
   align-self: center;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   font-weight: bold;
+  color: var(--accent);
 }
 
 .empty-div{

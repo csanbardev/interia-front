@@ -61,7 +61,7 @@ export function Categories() {
         <InputLeftElement>
           <SearchIcon />
         </InputLeftElement>
-        <Input type="text" placeholder='Busca tu categoría' name='filtro' onChange={handleFilter} width='50' />
+        <Input id='category-search-input' type="text" placeholder='Busca tu categoría' name='filtro' onChange={handleFilter} width='50' />
       </InputGroup>
     </div>
      

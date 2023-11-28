@@ -1,0 +1,8 @@
+#recent-tutorials, #likest-tutorials{
+  margin-top: 7rem;
+  margin-bottom: 7rem;
+}
+
+#recent-tutorials h2, #likest-tutorials h2{
+  margin-bottom: 1.7rem;
+}
