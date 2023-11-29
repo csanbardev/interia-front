@@ -21,7 +21,7 @@ export function PendingCategoriesTable({ token, api }) {
           </Thead>
           <Tbody>
             {data?.map((item) => (
-              <PendingCategoryRow key={item.id_category} api={api} id={item.id_category} title={item.name} token={token} />
+              <PendingCategoryRow key={item.cat_id} api={api} id={item.cat_id} title={item.cat_name} token={token} />
             ))}
           </Tbody>
         </Table>

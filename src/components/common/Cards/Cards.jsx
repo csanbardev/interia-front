@@ -159,25 +159,50 @@ export function TutorialCard({ img, title, url, id, length }) {
   )
 }
 
-export function ReportCard({ id_tutorial, token, img, title, url }) {
+export function ReportCard({ id_tutorial, token, img, title, url, onChange }) {
   const api = import.meta.env.VITE_API_URL
+  const toast = useToast()
 
 
   const onDelete = async () => {
     try {
       const res = await deleteReq(`${api}/tutorials/${id_tutorial}`, undefined, token)
-      window.location.reload()
+      toast({
+        title: 'Tutorial eliminado',
+        status: 'success',
+        duration: 2000,
+        isClosable: true
+      })
+      onChange(id_tutorial)
     } catch (error) {
-      console.error("Error deleting tuto:", error);
+      toast({
+        title: 'Error eliminando tutorial',
+        description: error,
+        status: 'error',
+        duration: 2000,
+        isClosable: true
+      })
     }
   }
 
   const onCancel = async () => {
     try {
       const res = await deleteReq(`${api}/reports/${id_tutorial}`, undefined, token)
-      window.location.reload()
+      toast({
+        title: 'Reporte cancelado',
+        status: 'success',
+        duration: 2000,
+        isClosable: true
+      })
+      onChange(id_tutorial)
     } catch (error) {
-      console.error("Error canceling report:", error);
+      toast({
+        title: 'Error al cancelar reporte',
+        description: error,
+        status: 'error',
+        duration: 2000,
+        isClosable: true
+      })
     }
   }
 

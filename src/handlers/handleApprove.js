@@ -5,7 +5,7 @@ const api = import.meta.env.VITE_API_URL
 
 export const handleApprove = async (id, adminToken) => {
   try {
-    const res = await patchReq(`${api}/tutorials/${id}`, {'approved':0}, adminToken)
+    const res = await patchReq(`${api}/tutorials/${id}`, {'approved':1}, adminToken)
 
     if(res){
       return res

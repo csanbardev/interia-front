@@ -58,7 +58,7 @@ export function Dashboard() {
   const handleDeleteTuto = async (id) => {
     try {
       await deleteReq(`${api}/tutorials/${id}`, undefined, token)
-      // window.location.reload()
+      
     } catch (error) {
 
     }
