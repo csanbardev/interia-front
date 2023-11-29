@@ -57,7 +57,7 @@ export function AddTutoForm() {
         <InputLeftElement pointerEvents='none'>
           <LinkIcon color='gray.300' />
         </InputLeftElement>
-        <Input size='lg' variant='solid' type="url" placeholder="YouTube url" {...register('url', {
+        <Input size='lg' type="url" placeholder="YouTube url" {...register('url', {
           required: 'Inserta una URL de YouTube',
           pattern: {
             value: /^(https?:\/\/)?(www\.)?(youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)(\S*)?$/,

@@ -1,9 +1,10 @@
 :root{
-  --main-background: #6A7865;
-  --main-second-color: #4C5B4E;
+  --main-background: #001524;
+  --main-second-color: #002024;
   --fonts: #DCE0EB;
   --accent: #EDAE49  ;
   --accent-second: #001524;
+  --footer: #4C5B4E;
 }
 
 *{
