@@ -11,6 +11,7 @@ import { useFetch } from '../../../hooks/useFetch'
 import { handleLogin } from '../../../handlers/handleLogin'
 import { handleSignup } from '../../../handlers/handleSignup'
 import { ValidationError } from '../Errors/Errors'
+import { SQL_ERROR_MESSAGES } from '../../../constants/constants'
 
 const api = import.meta.env.VITE_API_URL
 
@@ -34,15 +35,10 @@ export function AddTutoForm() {
         isClosable: true
       })
     } catch (error) {
-      let errorMessage = ""
-      if (error.message.includes('500')) {
-        errorMessage = "Algo ha ido muy mal"
-      } else if (error.message.includes('401')) {
-        errorMessage = "El enlace no es válido o no existe"
-      }
+
       toast({
         title: 'Ha habido un error',
-        description: errorMessage,
+        description: SQL_ERROR_MESSAGES[error.message],
         status: 'error',
         duration: 2000,
         isClosable: true
@@ -72,7 +68,7 @@ export function AddTutoForm() {
         required: 'Indica una categoría'
       })} required>
         {data?.map((item) => (
-          <option value={item.cat_id} key={item.catid}>{item.cat_name}</option>
+          <option value={item.cat_id} key={item.cat_id}>{item.cat_name}</option>
         ))}
       </Select>
       {errors.id_category && <ValidationError message={errors.id_category?.message} />}
@@ -133,9 +129,10 @@ export function SignupForm() {
       const { token, id_user, nick, role, avatar } = await handleSignup(data)
       updateAuth(token, id_user, nick, role, avatar)
     } catch (error) {
+      //alert(error.code)
       toast({
         title: 'Error al registrarse',
-        description: error.message,
+        description: SQL_ERROR_MESSAGES[error.message],
         status: 'error',
         duration: 2000,
         isClosable: true
@@ -201,7 +198,7 @@ export function AddCatForm() {
     } catch (error) {
       toast({
         title: 'Ha habido un error',
-        description: error.message,
+        description: SQL_ERROR_MESSAGES[error.message],
         status: 'error',
         duration: 2000,
         isClosable: true

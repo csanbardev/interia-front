@@ -1,10 +1,11 @@
-export const postReq = async (url, data, token="") => {
+export const postReq = async (url, data, token = "") => {
 
   try {
     const response = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` }, body: JSON.stringify(data) })
 
     if (!response.ok) {
-      throw new Error(response.status);
+      const errorResponse = await response.json()
+      throw new Error(errorResponse.code);
     }
 
     return response.json();
@@ -21,7 +22,8 @@ export const patchReq = async (url, data, token) => {
     const response = await fetch(url, { method: 'PATCH', headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` }, body: JSON.stringify(data) })
 
     if (!response.ok) {
-      throw new Error(response.status);
+      const errorResponse = await response.json()
+      throw new Error(errorResponse.code);
     }
 
     return response.json();
@@ -36,7 +38,7 @@ export const patchAvatar = async (url, data, token) => {
   try {
     const formData = new FormData()
     formData.append('avatar', data.avatar[0])
-    
+
     const response = await fetch(url, {
       method: 'PATCH',
       headers: { 'Authorization': `Bearer ${token}` },
@@ -44,7 +46,8 @@ export const patchAvatar = async (url, data, token) => {
     });
 
     if (!response.ok) {
-      throw new Error(response.status);
+      const errorResponse = await response.json()
+      throw new Error(errorResponse.code);
     }
 
     return response.json()
@@ -75,8 +78,8 @@ export const deleteReq = async (url, data, token) => {
     const response = await fetch(url, { method: 'DELETE', headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` }, body: JSON.stringify(data) })
 
     if (!response.ok) {
-      throw new Error(response.status);
-
+      const errorResponse = await response.json()
+      throw new Error(errorResponse.code);
     }
 
     return response.json();

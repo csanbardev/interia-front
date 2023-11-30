@@ -14,6 +14,5 @@ export const authenticateUser = async (credentials) => {
 
 export const createUser = async (newData) => {
   const res = await postReq(`${api}/signup`, newData)
-
   return res
 }
