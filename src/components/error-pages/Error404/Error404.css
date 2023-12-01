@@ -17,6 +17,18 @@
   font-size: 1.7rem;
 }
 
+.none-home-tutorial{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.none-home-tutorial img{
+  margin: 2.7rem;
+}
+.none-home-tutorial p{
+  font-size: 2rem;
+  letter-spacing: .1rem;
+}
 
 
 @media screen and (min-width: 1200px) {

@@ -43,9 +43,7 @@ export function Categories() {
   }, [currentPage, filter]);
 
 
-  if (error && error.includes('404')) {
-    return <Error404 />
-  }
+
 
   if (error && error.includes('500')) {
     return <Error500 />
@@ -75,11 +73,11 @@ export function Categories() {
       <div className="pagination-container">
         <Button
           onClick={() => setCurrentPage(currentPage - 1)}
-          isDisabled={currentPage === 1}
+          isDisabled={currentPage === 1 }
         >Anterior</Button>
         <Button
           onClick={() => setCurrentPage(currentPage + 1)}
-          isDisabled={currentPage === data?.pagination.totalPages}
+          isDisabled={currentPage === data?.pagination.totalPages || error}
         >Siguiente</Button>
       </div>
     </section>

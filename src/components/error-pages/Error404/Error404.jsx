@@ -1,8 +1,10 @@
-import { Button, Center, Heading, Image, Text } from "@chakra-ui/react";
+import { Button, Center, Heading, Text } from "@chakra-ui/react";
 import { Link, useNavigate } from "react-router-dom";
 import noTutorial from '../../../assets/ilustrations/no-tutorial.svg'
 import error404 from '../../../assets/ilustrations/not-found.svg'
+import empty from '../../../assets/ilustrations/empty.svg'
 import './Error404.css'
+
 export function NoneTutorial() {
   const navigate = useNavigate()
 
@@ -23,6 +25,19 @@ export function NoneTutorial() {
     </section>
   )
 }
+
+export function NoneHomeTutorial() {
+
+
+  return (
+    <article className="none-home-tutorial spaced">
+      <img src={empty} />
+      <p>Nada por aquí</p>
+    </article>
+  )
+}
+
+
 
 export function Error404() {
   const navigate = useNavigate()
