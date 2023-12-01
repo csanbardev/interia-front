@@ -40,7 +40,7 @@ export function AdminDashboard() {
   }, [change])
 
   return (
-    <section className="spaced" id="admin-dashboard">
+    <section className="spaced total-height" id="admin-dashboard">
       <Heading as='h2' marginTop='10' >Hi, admin {nick}!</Heading>
       <Heading as='h3' size='md' >Tutoriales pendientes</Heading>
       <Accordion allowToggle>

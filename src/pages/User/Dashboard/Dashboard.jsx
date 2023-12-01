@@ -89,7 +89,7 @@ export function Dashboard() {
   }
 
   return (
-    <section className="spaced" id="dashboard">
+    <section className="spaced total-height" id="dashboard">
       <Center marginTop='6' marginBottom={6}>
         <Avatar size='xl' src={api + '/' + avatar} />
         <label htmlFor="avatar-input" id='icon-container'>
