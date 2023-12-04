@@ -33,7 +33,7 @@ nav .session-link:first-of-type{
   font-size: .8rem;
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1920px) {
   .session-link{
     font-size: 1.1rem;
     line-height: 1.3rem;

@@ -24,8 +24,15 @@ form input::placeholder, form textarea::placeholder{
 }
 
 
+@media (min-width: 1024px){
+  form{
+    margin-left: 11rem;
+    margin-right: 11rem;
+  }
+}
 
-@media screen and (min-width: 1200px) {
+
+@media screen and (min-width: 1920px) {
 
   form{
     margin-left: 23rem;

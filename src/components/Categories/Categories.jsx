@@ -55,7 +55,7 @@ export function Categories() {
      
     <div className='category-search'>
 
-      <InputGroup marginBottom='52'>
+      <InputGroup >
         <InputLeftElement>
           <SearchIcon />
         </InputLeftElement>

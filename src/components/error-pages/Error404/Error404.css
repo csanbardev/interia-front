@@ -31,7 +31,7 @@
 }
 
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1920px) {
   #none-tutorial img, #error-404 img{
     height: 11rem;
   }
