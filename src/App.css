@@ -14,6 +14,8 @@
 body{
   background-color: var(--main-background) !important;
   color: var(--fonts) !important;
+  overflow-x: hidden;
+
 }
 
 h1,h2,h3,h4,h5{
@@ -30,7 +32,22 @@ h1,h2,h3,h4,h5{
   padding-right: 1rem;
 }
 
-@media screen and (min-width: 1200px) {
+@media(min-width:600px){
+  .spaced {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+@media(min-width:1200px){
+  .spaced {
+    padding-left: 11rem;
+    padding-right: 11rem;
+  }
+}
+
+
+@media screen and (min-width: 1920px) {
   .spaced {
     padding-left: 25rem;
     padding-right: 25rem;

@@ -1,11 +1,11 @@
 #categories {
-  margin-top: 17rem;
+  margin-top: 15rem;
   padding-top: 1.5rem;
   padding-bottom: 1rem;
   color: #c9c3c3;
 }
 
-.pagination-container{
+.pagination-container {
   display: flex;
   justify-content: center;
   gap: 2rem;
@@ -24,7 +24,7 @@
   line-height: 2.3rem;
 }
 
-#categories-title span{
+#categories-title span {
   font-weight: 700;
 }
 
@@ -35,13 +35,14 @@
   gap: 1rem;
 }
 
-.category-search{
+.category-search {
   display: grid;
   justify-content: center;
   width: 100%;
+  margin-bottom: 6rem;
 }
 
-.category-search input::placeholder{
+.category-search input::placeholder {
   color: white !important;
   font-weight: 700;
 }
@@ -63,7 +64,31 @@
   right: 0;
 }
 
-@media screen and (min-width: 1200px) {
+
+@media(min-width:600px) {
+  .category-search {
+    margin-bottom: 15rem;
+  }
+}
+
+@media(min-width:600px) and (max-width: 1200px) {
+  #gridder {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 13rem), 1fr));
+    gap: 1rem;
+  }
+
+
+}
+
+@media (min-width: 1024px) {
+
+  #gridder {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+    gap: 1rem;
+  }
+}
+
+@media screen and (min-width: 1920px) {
   #gridder {
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
     gap: 1rem;

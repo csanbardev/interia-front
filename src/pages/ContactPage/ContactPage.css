@@ -24,7 +24,7 @@
   text-align: left;
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1920px) {
   #contact-page #faq{
     margin-left: 11rem;
     margin-right: 11rem;
