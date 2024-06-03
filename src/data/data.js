@@ -243,3 +243,73 @@ export const LIKEST_TUTORIALS = [
     "tut_yb_likes": 2336
   }
 ]
+
+export const TUTORIALS_EXAMPLE = {
+  "data": [
+    {
+      "likes": 1,
+      "tut_id": 19,
+      "tut_url": "https://www.youtube.com/watch?v=Bguyn9WpdQU",
+      "tut_approved": "1",
+      "tut_published_date": "2020-03-26T23:00:00.000Z",
+      "tut_cat_id": 4,
+      "tut_usr_id": 2,
+      "tut_likes": null,
+      "tut_title": "HAZ LEVITAR UNA MONEDA CON TUS MANOS! TUTORIAL",
+      "tut_author": "Sr. Mago",
+      "tut_src_image": "https://i.ytimg.com/vi/Bguyn9WpdQU/mqdefault.jpg",
+      "tut_length": "10m. 3s.",
+      "tut_yb_likes": 57765
+    },
+    {
+      "likes": 1,
+      "tut_id": 21,
+      "tut_url": "https://www.youtube.com/watch?v=Caaokoo2yUo",
+      "tut_approved": "1",
+      "tut_published_date": "2020-05-12T22:00:00.000Z",
+      "tut_cat_id": 4,
+      "tut_usr_id": 2,
+      "tut_likes": null,
+      "tut_title": "Cómo Empezar a Hacer Magia - Aprende magia",
+      "tut_author": "Domina La Magia",
+      "tut_src_image": "https://i.ytimg.com/vi/Caaokoo2yUo/mqdefault.jpg",
+      "tut_length": "7m. 56s.",
+      "tut_yb_likes": 3326
+    },
+    {
+      "likes": 0,
+      "tut_id": 20,
+      "tut_url": "https://www.youtube.com/watch?v=GvmPHX-BNrA",
+      "tut_approved": "1",
+      "tut_published_date": "2021-11-15T23:00:00.000Z",
+      "tut_cat_id": 4,
+      "tut_usr_id": 2,
+      "tut_likes": null,
+      "tut_title": "El mejor truco con cartas fácil y automático explicado! 🔝",
+      "tut_author": "Magia & Cardistry",
+      "tut_src_image": "https://i.ytimg.com/vi/GvmPHX-BNrA/mqdefault.jpg",
+      "tut_length": "10m. 59s.",
+      "tut_yb_likes": 7527
+    },
+    {
+      "likes": 0,
+      "tut_id": 18,
+      "tut_url": "https://www.youtube.com/watch?v=XnjP_DXE_8E",
+      "tut_approved": "1",
+      "tut_published_date": "2021-11-25T23:00:00.000Z",
+      "tut_cat_id": 4,
+      "tut_usr_id": 2,
+      "tut_likes": null,
+      "tut_title": "Aprende tu primer truco de magia en 2 minutos",
+      "tut_author": "Julio Ribera",
+      "tut_src_image": "https://i.ytimg.com/vi/XnjP_DXE_8E/mqdefault.jpg",
+      "tut_length": "2m. 15s.",
+      "tut_yb_likes": 16385
+    }
+  ],
+  "pagination": {
+    "page": 1,
+    "limit": 10,
+    "totalPages": 1
+  }
+}

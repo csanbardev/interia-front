@@ -8,7 +8,7 @@ import { Error500 } from '../../components/error-pages/Error500/Error500'
 import { useEffect, useState } from 'react';
 import { Button, Center } from '@chakra-ui/react';
 const api = import.meta.env.VITE_API_URL
-
+import { TUTORIALS_EXAMPLE } from '../../data/data';
 
 export function Tutorials() {
   const [currentPage, setCurrentPage] = useState(1)
@@ -22,12 +22,12 @@ export function Tutorials() {
     async function fetchData() {
       try {
         setLoading(true);
-        const response = await fetch(`${api}/tutorials?category=${categoryId}&page=${currentPage}`);
-        if (!response.ok) {
-          throw new Error(`HTTP Error! Status: ${response.status}`);
-        }
-        const jsonData = await response.json();
-        setData(jsonData);
+        // const response = await fetch(`${api}/tutorials?category=${categoryId}&page=${currentPage}`);
+        // if (!response.ok) {
+        //   throw new Error(`HTTP Error! Status: ${response.status}`);
+        // }
+        // const jsonData = await response.json();
+        setData(TUTORIALS_EXAMPLE);
         setLoading(false);
       } catch (error) {
         setError(error.message);
