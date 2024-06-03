@@ -313,3 +313,54 @@ export const TUTORIALS_EXAMPLE = {
     "totalPages": 1
   }
 }
+
+export const ALL_CATEGORIES = [
+  {
+    "cat_id": 1,
+    "cat_name": "Guitarra",
+    "cat_pending": "0",
+    "cat_img": "uploads/guitarra.svg"
+  },
+  {
+    "cat_id": 2,
+    "cat_name": "Cacharreo",
+    "cat_pending": "0",
+    "cat_img": "uploads/cacharreo.svg"
+  },
+  {
+    "cat_id": 3,
+    "cat_name": "Costura",
+    "cat_pending": "0",
+    "cat_img": "uploads/costura.svg"
+  },
+  {
+    "cat_id": 4,
+    "cat_name": "Magia",
+    "cat_pending": "0",
+    "cat_img": "uploads/magia.svg"
+  },
+  {
+    "cat_id": 5,
+    "cat_name": "Desarrollo Web",
+    "cat_pending": "0",
+    "cat_img": "uploads/web-dev.svg"
+  },
+  {
+    "cat_id": 6,
+    "cat_name": "Inglés",
+    "cat_pending": "0",
+    "cat_img": "uploads/ingles.svg"
+  },
+  {
+    "cat_id": 7,
+    "cat_name": "Alemán",
+    "cat_pending": "0",
+    "cat_img": "uploads/aleman.svg"
+  },
+  {
+    "cat_id": 8,
+    "cat_name": "Cocina",
+    "cat_pending": "0",
+    "cat_img": "uploads/cocina.svg"
+  }
+]

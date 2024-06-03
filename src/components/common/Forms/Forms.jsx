@@ -12,7 +12,7 @@ import { handleLogin } from '../../../handlers/handleLogin'
 import { handleSignup } from '../../../handlers/handleSignup'
 import { ValidationError } from '../Errors/Errors'
 import { SQL_ERROR_MESSAGES } from '../../../constants/constants'
-
+import { ALL_CATEGORIES } from '../../../data/data'
 const api = import.meta.env.VITE_API_URL
 
 
@@ -21,7 +21,7 @@ export function AddTutoForm() {
   const { register, formState: { errors }, handleSubmit, reset } = useForm()
   const toast = useToast()
 
-  const { data, loading, error } = useFetch(api + '/categoriesFull')
+  //const { data, loading, error } = useFetch(api + '/categoriesFull')
 
 
   const onSubmit = async (data) => {
@@ -67,7 +67,7 @@ export function AddTutoForm() {
       <Select size='lg' placeholder='Elige categoría' {...register('id_category', {
         required: 'Indica una categoría'
       })} required>
-        {data?.map((item) => (
+        {ALL_CATEGORIES?.map((item) => (
           <option value={item.cat_id} key={item.cat_id}>{item.cat_name}</option>
         ))}
       </Select>
