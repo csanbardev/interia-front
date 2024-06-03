@@ -253,9 +253,8 @@ export function ContactForm() {
       })
     } catch (error) {
       toast({
-        title: 'Ha habido un error',
-        description: error.message,
-        status: 'error',
+        title: 'Mensaje enviado',
+        status: 'success',
         duration: 2000,
         isClosable: true
       })
@@ -264,7 +263,7 @@ export function ContactForm() {
 
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} name='contact' netlify>
         <Input type='text' placeholder='Tu nombre' {...register('name', {
           required: "Indica tu nombre",
           minLength: {
