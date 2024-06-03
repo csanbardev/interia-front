@@ -50,7 +50,7 @@ function MenuAuth({ handleLogout, nick, userId, role, avatar }) {
 function MenuNonAuth() {
   return (
     <>
-      <Link className='session-link' to='/signup'>unirse</Link>
+      <Link className='session-link' to='/'>DEMO</Link>
       <Link id='logo' to='/'>Interia</Link>
       <Link className='session-link' to='/login'>iniciar<br />sesión</Link>
     </>

@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react';
 import { Button, Center } from '@chakra-ui/react';
 const api = import.meta.env.VITE_API_URL
 import { TUTORIALS_EXAMPLE } from '../../data/data';
+import { DemoModal } from '../../components/common/Modals/Modal';
 
 export function Tutorials() {
   const [currentPage, setCurrentPage] = useState(1)
@@ -16,7 +17,7 @@ export function Tutorials() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  
+  const DEMO_TEXT = "Aquí muestro los tutoriales según categoría. No te asustes si no concuerda ahora ;)"
   useEffect(() => {
     // Define una función asincrónica para hacer la llamada a la API.
     async function fetchData() {
@@ -67,6 +68,7 @@ export function Tutorials() {
           isDisabled={currentPage === data?.pagination.totalPages}
         >Siguiente</Button>
       </div>
+      <DemoModal text={DEMO_TEXT} />
     </section>
   )
 }

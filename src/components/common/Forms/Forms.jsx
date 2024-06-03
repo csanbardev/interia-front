@@ -13,6 +13,7 @@ import { handleSignup } from '../../../handlers/handleSignup'
 import { ValidationError } from '../Errors/Errors'
 import { SQL_ERROR_MESSAGES } from '../../../constants/constants'
 import { ALL_CATEGORIES } from '../../../data/data'
+import { DemoModal } from '../Modals/Modal'
 const api = import.meta.env.VITE_API_URL
 
 
@@ -20,7 +21,7 @@ export function AddTutoForm() {
   const { token } = useContext(AuthContext)
   const { register, formState: { errors }, handleSubmit, reset } = useForm()
   const toast = useToast()
-
+  const DEMO_TEXT = "Prueba con enlaces de YouTube y que no lo sean. TODO se valida. Por supuesto, es una demo: dará error :c"
   //const { data, loading, error } = useFetch(api + '/categoriesFull')
 
 
@@ -77,6 +78,7 @@ export function AddTutoForm() {
       <Center>
         <Button variant='solid' colorScheme="teal" type="submit" marginTop='7' >Enviar</Button>
       </Center>
+      <DemoModal text={DEMO_TEXT} />
     </form>
   )
 }
@@ -85,11 +87,11 @@ export function LoginForm() {
   const { token, updateAuth } = useContext(AuthContext)
   const { register, formState: { errors }, handleSubmit } = useForm()
   const toast = useToast()
-
+  const DEMO_TEXT = "Prueba a introducir un usuario y una contraseña válida :)"
   const onSubmit = async (data) => {
     try {
-      const { token, id_user, nick, role, avatar } = await handleLogin(data)
-      updateAuth(token, id_user, nick, role, avatar)
+      //const { token, id_user, nick, role, avatar } = await handleLogin(data)
+      updateAuth("token", 2, "Usuario Demo", "user", "avatar")
 
     } catch (error) {
       toast({
@@ -115,6 +117,7 @@ export function LoginForm() {
       <Center>
         <Button variant='solid' colorScheme="teal" type="submit" marginTop='7' >Enviar</Button>
       </Center>
+      <DemoModal text={DEMO_TEXT} />
     </form>
   )
 }
@@ -183,6 +186,7 @@ export function AddCatForm() {
   const [error, setError] = useState(null)
   const { register, formState: { errors }, handleSubmit, reset } = useForm()
   const toast = useToast()
+  const DEMO_TEXT = "Aquí puedes sugerir una categoría. ¡AH! Es una demo, dará error :C"
 
 
   const onSubmit = async (data) => {
@@ -227,6 +231,7 @@ export function AddCatForm() {
       <Center>
         <Button variant='solid' colorScheme="teal" type="submit" marginTop='7'>Enviar</Button>
       </Center>
+      <DemoModal text={DEMO_TEXT} />
     </form>
   )
 }

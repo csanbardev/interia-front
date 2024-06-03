@@ -9,6 +9,7 @@ import { DashboardAccordion } from "../../../components/common/Accordion/Accordi
 import { FavTutorials } from "../../../components/Containers/Containers"
 import { deleteReq, patchAvatar } from "../../../services/http"
 import { EmptyAdvert } from "../../../components/common/Errors/Errors"
+import { DemoModal } from '../../../components/common/Modals/Modal'
 
 const api = import.meta.env.VITE_API_URL
 
@@ -23,6 +24,7 @@ export function Dashboard() {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [saving, setSaving] = useState(false)
   const cancelRef = useRef()
+  const DEMO_TEXT = "Este es tu perfil. Es una demo, así que no esperes encontrar nada ;)"
 
 
 
@@ -137,6 +139,7 @@ export function Dashboard() {
           </AlertDialogContent>
         </AlertDialogOverlay>
       </AlertDialog>
+      <DemoModal text={DEMO_TEXT} />
     </section>
   )
 }
