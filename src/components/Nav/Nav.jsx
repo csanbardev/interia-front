@@ -6,7 +6,7 @@ import { useContext } from 'react'
 import { AuthContext } from '../../services/AuthContext'
 import { UserAvatarIcon } from '../common/AvatarIcons/AvatarIcons'
 
-const api = import.meta.env.VITE_API_URL
+const api = import.meta.env.VITE_FRONT_URL
 
 
 export function Nav() {
@@ -25,6 +25,7 @@ export function Nav() {
 
 
 function MenuAuth({ handleLogout, nick, userId, role, avatar }) {
+  const DEMO_AVATAR_PATH = "assets/demo/avatar.png"
   return (
     <>
       
@@ -32,7 +33,7 @@ function MenuAuth({ handleLogout, nick, userId, role, avatar }) {
         <MenuButton
           as={IconButton}
           aria-label="Options"
-          icon={<UserAvatarIcon imageUrl={api+'/'+avatar} />}
+          icon={<UserAvatarIcon imageUrl={api+'/'+DEMO_AVATAR_PATH} />}
           variant='ghostsm' />
         <MenuList>
           <MenuItem style={{color: 'black'}}><Link to={role === 'admin' ? '/admin/' + userId : '/user/' + userId}>Perfil</Link></MenuItem>

@@ -6,7 +6,7 @@ import { Error500 } from '../error-pages/Error500/Error500';
 import { SearchIcon } from '@chakra-ui/icons';
 import { CATEGORIES } from '../../data/data';
 
-const api = import.meta.env.VITE_API_URL
+const api = import.meta.env.VITE_FRONT_URL
 
 
 export function Categories() {
