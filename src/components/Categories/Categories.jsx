@@ -4,6 +4,7 @@ import { Button, Center, Divider, Input, InputGroup, InputLeftElement, SimpleGri
 import { CategoryCard } from "../common/Cards/Cards";
 import { Error500 } from '../error-pages/Error500/Error500';
 import { SearchIcon } from '@chakra-ui/icons';
+import { CATEGORIES } from '../../data/data';
 
 const api = import.meta.env.VITE_API_URL
 
@@ -25,12 +26,8 @@ export function Categories() {
     async function fetchData() {
       try {
         setLoading(true);
-        const response = await fetch(`${api}/categories?page=${currentPage}&name=${filter}`);
-        if (!response.ok) {
-          throw new Error(`HTTP Error! Status: ${response.status}`);
-        }
-        const jsonData = await response.json();
-        setData(jsonData);
+       
+        setData(CATEGORIES);
         setLoading(false);
       } catch (error) {
         setError(error.message);
